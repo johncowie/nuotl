@@ -1,7 +1,11 @@
 (ns sandpit.server
-  (:require [noir.server :as server]))
+  (:require [noir.server :as server]
+	    [sandpit.views
+	     common
+	     welcome])
+  (:gen-class))
 
-(server/load-views "src/sandpit/views/")
+(server/load-views-ns 'sandpit.views)
 
 (defn -main [& m]
   (let [mode (keyword (or (first m) :dev))
@@ -9,6 +13,6 @@
     (server/start port {:mode mode
                         :ns 'sandpit})))
 
-(def handler (server/gen-handler {:mode :dev
-                                  :ns 'noir-example}))
+(def handler (server/gen-handler {:mode :prod
+                                  :ns 'sandpit}))
 
