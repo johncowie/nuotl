@@ -1,7 +1,8 @@
 (ns sandpit.views.welcome
   (:require [sandpit.views.common :as common])
   (:use [noir.core :only [defpage]]
-        [hiccup.core :only [html]]))
+        [hiccup.core :only [html]]
+		[hiccup.page-helpers :only [include-css html5]]))
 
 (defpage "/welcome" []
          (common/layout
@@ -15,5 +16,5 @@
               [:body
                [:div#wrapper
                 [:h1 "Hello World!"]
-				[:p "It works.  Here is some more text.  Fa la la la]
+				[:p "It works.  Here is some more text.  Fa la la la"]
 				]]))
