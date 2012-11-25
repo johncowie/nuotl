@@ -15,4 +15,5 @@
               [:body
                [:div#wrapper
                 [:h1 "Hello World!"]
-				[:p "It works.  Here is some more text.  Fa la la la]])))
+				[:p "It works.  Here is some more text.  Fa la la la]
+				]]))
