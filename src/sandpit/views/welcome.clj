@@ -3,15 +3,18 @@
   (:use [noir.core :only [defpage]]
         [hiccup.core :only [html]]
 		    [hiccup.page-helpers :only [include-css html5]]
-        [sandpit.dao.dao :only [get-event]]
+        [sandpit.dao.dao :only [get-events]]
+        [clj-time.format :only [unparse formatter]]
         ))
+
+(defn format-date [date] (unparse (formatter "yyyyMMdd") date))
 
 (defpage "/welcome" []
          (common/layout
            [:p "Welcome to sandpit"]))
 
 (defpage "/" []
-    (let [event (get-event 1)]
+    (let [events (get-events)]
 		(html5
             [:head
                [:title "My Noir WebPage"]
@@ -19,12 +22,15 @@
               [:body
                [:div#wrapper
                 [:h1 "Hello World!"]
-                [:ul
-                 [:li (event :id)]
-                 [:li (event :start)]
-                 [:li (event :end)]
-                 [:li (event :html)]
-                 [:li (event :tags)]]
-				[:p "It works.  Here is some more text.  Can I change it dynamically when running locally?"]
+                [:table
+                 (for [event events]
+                 [:tr
+                   [:td (format-date (event :start))]
+                   [:td (format-date (event :end))]
+                   [:td (event :html)]
+                   [:td ((event :tweeter) :display-name)]
+                  ]
+                   )]
 				]])))
+
 

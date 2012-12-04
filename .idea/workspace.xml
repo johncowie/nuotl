@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cdf5c45-c17b-4c22-8f64-fdb37c2893d2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sandpit/dao/dao.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/noir-sandpit.iml" afterPath="$PROJECT_DIR$/noir-sandpit.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sandpit/helpers/events.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.lein-deps-sum" afterPath="$PROJECT_DIR$/.lein-deps-sum" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/public/css/reset.css" afterPath="$PROJECT_DIR$/resources/public/css/reset.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sandpit/dao/dao.clj" afterPath="$PROJECT_DIR$/src/sandpit/dao/dao.clj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sandpit/views/welcome.clj" afterPath="$PROJECT_DIR$/src/sandpit/views/welcome.clj" />
     </list>
     <ignored path="noir-sandpit.iws" />
@@ -63,10 +66,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="welcome.clj" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="welcome.clj" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sandpit/views/welcome.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="22" selection-start="904" selection-end="904" vertical-scroll-proportion="0.75352114">
+            <state line="6" column="49" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reset.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/public/css/reset.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -93,7 +105,7 @@
       <file leaf-file-name="project.clj" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="59" selection-start="250" selection-end="250" vertical-scroll-proportion="0.0">
+            <state line="5" column="45" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -102,7 +114,7 @@
       <file leaf-file-name="dao.clj" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sandpit/dao/dao.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="1" selection-start="668" selection-end="668" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="19" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -112,6 +124,15 @@
         <entry file="file://$PROJECT_DIR$/src/sandpit/helpers/play_functions.clj">
           <provider selected="true" editor-type-id="text-editor">
             <state line="4" column="0" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="events.clj" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sandpit/helpers/events.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="0" selection-start="30" selection-end="30" vertical-scroll-proportion="0.1056338">
               <folding />
             </state>
           </provider>
@@ -155,6 +176,8 @@
         <option value="$PROJECT_DIR$/project.clj" />
         <option value="$PROJECT_DIR$/src/sandpit/dao/dao.clj" />
         <option value="$PROJECT_DIR$/src/sandpit/views/welcome.clj" />
+        <option value="$PROJECT_DIR$/resources/public/css/reset.css" />
+        <option value="$PROJECT_DIR$/src/sandpit/helpers/events.clj" />
       </list>
     </option>
   </component>
@@ -288,6 +311,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="noir-sandpit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="noir-sandpit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -610,26 +655,9 @@
         <state line="10" column="25" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="59" selection-start="250" selection-end="250" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sandpit/helpers/play_functions.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/noir-sandpit.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="0" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sandpit/dao/dao.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="1" selection-start="668" selection-end="668" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sandpit/server.clj">
@@ -642,9 +670,42 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="45" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sandpit/views/welcome.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="22" selection-start="904" selection-end="904" vertical-scroll-proportion="0.75352114">
+        <state line="6" column="49" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/public/css/reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sandpit/helpers/play_functions.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sandpit/dao/dao.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="19" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sandpit/helpers/events.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="30" selection-end="30" vertical-scroll-proportion="0.1056338">
           <folding />
         </state>
       </provider>
