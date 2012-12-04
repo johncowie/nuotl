@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cdf5c45-c17b-4c22-8f64-fdb37c2893d2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sandpit/helpers/events.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.lein-deps-sum" afterPath="$PROJECT_DIR$/.lein-deps-sum" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/public/css/reset.css" afterPath="$PROJECT_DIR$/resources/public/css/reset.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sandpit/dao/dao.clj" afterPath="$PROJECT_DIR$/src/sandpit/dao/dao.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sandpit/views/welcome.clj" afterPath="$PROJECT_DIR$/src/sandpit/views/welcome.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sandpit/helpers/events.clj" afterPath="$PROJECT_DIR$/src/sandpit/helpers/events.clj" />
     </list>
     <ignored path="noir-sandpit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -132,7 +126,7 @@
       <file leaf-file-name="events.clj" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sandpit/helpers/events.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="30" selection-end="30" vertical-scroll-proportion="0.1056338">
+            <state line="3" column="41" selection-start="95" selection-end="95" vertical-scroll-proportion="0.1056338">
               <folding />
             </state>
           </provider>
@@ -361,7 +355,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RunManager" selected="Clojure Script.dao">
+  <component name="RunManager" selected="Clojure Script.events">
     <configuration default="false" name="test-play-functions" type="ClojureScriptRunConfiguration" factoryName="Clojure Script" temporary="true">
       <module name="noir-sandpit" />
       <setting name="path" value="$PROJECT_DIR$/test/sandpit/helpers/test-play-functions.clj" />
@@ -390,6 +384,17 @@
       <setting name="vmparams" value="" />
       <setting name="params" value="" />
       <setting name="workDir" value="$PROJECT_DIR$/src/sandpit/dao" />
+      <setting name="repl" value="false" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="events" type="ClojureScriptRunConfiguration" factoryName="Clojure Script" temporary="true">
+      <module name="noir-sandpit" />
+      <setting name="path" value="$PROJECT_DIR$/src/sandpit/helpers/events.clj" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="$PROJECT_DIR$/src/sandpit/helpers" />
       <setting name="repl" value="false" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
@@ -526,10 +531,11 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Clojure Script.test-play-functions" />
       <item index="1" class="java.lang.String" itemvalue="Clojure Script.test_play_functions" />
       <item index="2" class="java.lang.String" itemvalue="Clojure Script.dao" />
+      <item index="3" class="java.lang.String" itemvalue="Clojure Script.events" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -565,7 +571,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="815" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -583,7 +589,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24928162" sideWeight="0.68443805" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31556195" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31556195" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -660,26 +666,9 @@
         <state line="15" column="0" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sandpit/server.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sandpit/views/common.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="45" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sandpit/views/welcome.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="49" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -703,9 +692,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sandpit/server.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sandpit/views/welcome.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="49" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sandpit/views/common.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sandpit/helpers/events.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="30" selection-end="30" vertical-scroll-proportion="0.1056338">
+        <state line="3" column="41" selection-start="95" selection-end="95" vertical-scroll-proportion="0.1056338">
           <folding />
         </state>
       </provider>
