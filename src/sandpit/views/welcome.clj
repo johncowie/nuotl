@@ -1,20 +1,15 @@
 (ns sandpit.views.welcome
-  (:require [sandpit.views.common :as common])
   (:use [noir.core :only [defpage]]
         [hiccup.core :only [html]]
-		    [hiccup.page-helpers :only [include-css html5]]
-        [sandpit.dao.dao :only [get-events]]
+		[hiccup.page-helpers :only [include-css html5]]
+        [sandpit.dao.dao :only [get-all-events]]
         [clj-time.format :only [unparse formatter]]
         ))
 
 (defn format-date [date] (unparse (formatter "yyyyMMdd") date))
 
-(defpage "/welcome" []
-         (common/layout
-           [:p "Welcome to sandpit"]))
-
 (defpage "/" []
-    (let [events (get-events)]
+    (let [events (get-all-events)]
 		(html5
             [:head
                [:title "My Noir WebPage"]
@@ -28,9 +23,6 @@
                    [:td (format-date (event :start))]
                    [:td (format-date (event :end))]
                    [:td (event :html)]
-                   [:td ((event :tweeter) :display-name)]
-                  ]
-                   )]
-				]])))
+                   [:td ((event :tweeter) :display-name)]])]]])))
 
 

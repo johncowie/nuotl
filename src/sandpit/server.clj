@@ -18,4 +18,3 @@
     {:mode :prod, 
      :ns 'sandpit
      :session-cookie-attrs {:max-age 1800000}}))
-
