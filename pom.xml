@@ -10,7 +10,7 @@
   <scm>
     <connection>scm:git:git://github.com/johncowie/noir-sandpit.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/johncowie/noir-sandpit.git</developerConnection>
-    <tag>b40227045962c54811936379c29d301c731ba9a6</tag>
+    <tag>f1dffccbb80f1a8e0b93319d50e96b920a85996f</tag>
     <url>https://github.com/johncowie/noir-sandpit</url>
   </scm>
   <build>
@@ -63,7 +63,7 @@
     <dependency>
       <groupId>noir</groupId>
       <artifactId>noir</artifactId>
-      <version>1.2.1</version>
+      <version>1.2.2</version>
     </dependency>
     <dependency>
       <groupId>com.novemberain</groupId>

@@ -1,8 +1,6 @@
 (ns sandpit.server
   (:require [noir.server :as server]
-	    [sandpit.views
-	     common
-	     welcome])
+	    [sandpit.views welcome])
   (:gen-class))
 
 (server/load-views-ns 'sandpit.views)

@@ -3,7 +3,9 @@
     [monger.core :as mg]
     [monger.collection :as mc]
    	[monger.joda-time])
-  (:use [clj-time.core :only [date-time]]))
+  (:use [clj-time.core :only [date-time plus months]]
+        [sandpit.helpers.events :only [to-month]]
+        [monger.operators]))
 
 (mg/connect!)
 (mg/set-db! (mg/get-db "noir-test-db"))
@@ -14,11 +16,12 @@
 (defn get-event [id]
   (mc/find-one-as-map "events" {:id id}))
 
-(defn get-all-events []
-  	(mc/find-maps "events"))
+(defn get-events [year month]
+  (let [start-date (date-time year month) end-date (plus (date-time year month) (months 1))]
+  (mc/find-maps "events" {:start {$gte start-date $lt end-date}})))
 
 
-;(add-event { :id 3 :start (date-time 2012 12 12 15) :end (date-time 2012 12 15 17)
-;    :tweeter {:id 2 :name "lukeskywalker" :display-name "Luke Skywalker" :approved "Y"}
-;    :html "May the force be with you" :tags "tag2 tag3" :area "BL"})
+;(add-event { :id 4 :start (date-time 2012 12 12 15) :end (date-time 2012 12 15 17)
+:tweeter {:id 4 :name "darthvadar" :display-name "Darth Vadar" :approved "Y"}
+;    :html "I am your father Luke" :tags "death star" :area "S"})
 
