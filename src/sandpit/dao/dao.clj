@@ -32,10 +32,3 @@
 
 (for [e test-data/data]
   (add-event e))
-
-;TODO 
-;  insert event and tweeter separately
-;    keep the tweeter id inside event and pull out the rest as a separate map
-;  replace :id with :_id for both
-;  
-

@@ -9,7 +9,7 @@
      	:text "Luke I am your father"
      	:tweeter {:name "darthvadar" :display-name "Darth Vadar" 
                   :_id "1" :approved "yes"}
-     	:tags "father luke sith"
+     	:tags "environment"
      	:area "S"
     }
     {
@@ -19,7 +19,7 @@
      	:text "Coffee on tatooine"
      	:tweeter {:name "lukeskywalker" :display-name "Luke Skywalker" 
                   :_id "2" :approved "yes"}
-     	:tags "coffee tatooine"
+     	:tags "feminism"
      	:area "CF"
     }
     {
@@ -29,7 +29,7 @@
      	:text "Out on the razz with C3P0 and R2D2"
      	:tweeter {:name "lukeskywalker" :display-name "Luke Skywalker" 
                   :_id "2" :approved "yes"}
-     	:tags "c3po r2d2"
+     	:tags "cuts"
      	:area "G"
     }
     {
@@ -39,7 +39,17 @@
      	:text "Dinner at the Cantina"
      	:tweeter {:name "hanssolo" :display-name "Hans Solo" 
                   :_id "3" :approved "yes"}
-     	:tags "dinner"
+     	:tags "trade"
      	:area "N"
+    }
+    {
+		:_id 5
+     	:start (date-time 2012 12 25)
+     	:end (date-time 2012 12 26)
+     	:text "Christmas in the swamp"
+     	:tweeter {:name "yoda" :display-name "Yoda" 
+                  :_id "4" :approved "yes"}
+     	:tags "other"
+     	:area "S"
     }
 ])

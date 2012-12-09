@@ -13,7 +13,7 @@
 (defn format-date [date] (unparse (formatter "HH:mm") date))
 
 (defpartial event-row [event]
-                 [:tr
+                 [:tr {:class (format "event %s" (event :tags))}
                    [:td {:class "time"} (format-date (event :start))]
                    [:td {:class "time"} (format-date (event :end))]
                    [:td {:class "text"} (event :text)]
@@ -22,7 +22,8 @@
 
 (defpartial day-table [day events]
   		[:table 
-          [:tr [:th {:colspan 4} day]] 
+          [:tr {:class "header"} 
+           [:th {:colspan 4} day]] 
 			(for [event events]
 				(event-row event))])
 
@@ -34,12 +35,10 @@
                [:title (format "Next Up On The Left %s %s" y m)]
                (include-css "/css/reset.css")]
             [:body
-               [:div#wrapper
-                	[:h1 "events"]
+               [:div {:class "container"}
+                	[:h1 (format "%s/%s" y m)]
                  (for [[day events] month-map]
 					(day-table day events))]])))
-
-(send-request "/2012/12" {})
 
 (defpage "/events/:y/:m" {:keys [y m]}
 	(event-page y m))

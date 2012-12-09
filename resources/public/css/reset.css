@@ -1,9 +1,56 @@
+body {
+	background-color: #aaa;
+	color: #000;
+	font-size: 20px;
+	font-family: "Verdana", sans-serif; 
+}
+
+table {
+	border-collapse: collapse;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
 th {
 	text-align: left;
 }
 
+td, th {
+	padding: 8px; 
+}
+
+.container {
+	width: 800px;
+	margin: 0 auto 0 auto;
+}
+
+.environment {
+	background-color: #009989;
+}
+
+.cuts {
+	background-color: #CE1836;
+}
+
+.trade {
+	background-color: #F85931;	
+}
+
+.feminism {
+	background-color: #EDB92E;
+}
+
+.other {
+	background-color: #A3A948;
+}
+
+.header {
+
+}
+
 .time {
 	width: 50px;
+	text-align: center;
 }
 
 .text {
