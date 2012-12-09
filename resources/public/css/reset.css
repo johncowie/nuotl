@@ -1,4 +1,18 @@
+th {
+	text-align: left;
+}
 
+.time {
+	width: 50px;
+}
+
+.text {
+	width: 400px;
+}
+
+.name {
+	width: 200px;
+}
 
 
 

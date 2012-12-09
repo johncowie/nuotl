@@ -2,26 +2,40 @@
   (:require
     [monger.core :as mg]
     [monger.collection :as mc]
-   	[monger.joda-time])
-  (:use [clj-time.core :only [date-time plus months]]
+   	[monger.joda-time]
+   	[sandpit.dao.test-data :as test-data])
+  (:use [clj-time.core :only [date-time plus months now year month]]
         [sandpit.helpers.events :only [to-month]]
         [monger.operators]))
 
 (mg/connect!)
-(mg/set-db! (mg/get-db "noir-test-db"))
+(mg/set-db! (mg/get-db "nuotl"))
+
+(defn split-event [event]
+	{:event (assoc event :tweeter ((event :tweeter) :_id)) :tweeter (event :tweeter)})
 
 (defn add-event [event]
-	(mc/insert "events" event))
+  (let [components (split-event event)]
+	(mc/save "event" (components :event))
+    (mc/save "tweeter" (components :tweeter))))
 
 (defn get-event [id]
-  (mc/find-one-as-map "events" {:id id}))
+  (mc/find-one-as-map "event" {:_id id}))
 
-(defn get-events [year month]
-  (let [start-date (date-time year month) end-date (plus (date-time year month) (months 1))]
-  (mc/find-maps "events" {:start {$gte start-date $lt end-date}})))
+(defn get-events [y m]
+  (let [start-date (date-time y m) end-date (plus (date-time y m) (months 1))]
+  	(let [events (mc/find-maps "event" {:start {$gte start-date $lt end-date}}) updated-events (transient [])]
+      (doseq [event events]
+        (conj! updated-events (assoc event :tweeter (mc/find-one-as-map "tweeter" {:_id (event :tweeter)}))))
+	  (persistent! updated-events))))
 
 
-;(add-event { :id 4 :start (date-time 2012 12 12 15) :end (date-time 2012 12 15 17)
-:tweeter {:id 4 :name "darthvadar" :display-name "Darth Vadar" :approved "Y"}
-;    :html "I am your father Luke" :tags "death star" :area "S"})
+(for [e test-data/data]
+  (add-event e))
+
+;TODO 
+;  insert event and tweeter separately
+;    keep the tweeter id inside event and pull out the rest as a separate map
+;  replace :id with :_id for both
+;  
 
