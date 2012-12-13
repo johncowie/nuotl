@@ -1,0 +1,130 @@
+[
+{"_id":"AB", "name":"Aberdeen", "region":{ "$ref" : "Region", "$id" : "SCOTLAND" }},
+{"_id":"AL", "name":"St Albans","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }},
+{"_id":"B","name":"Birmingham","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }},
+{"_id":"BA","name":"Bath","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }},
+{"_id":"BB","name":"Blackburn","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }},
+{"_id":"BD","name":"Bradford","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }},
+{"_id":"BH","name":"Bournemouth","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }},
+{"_id":"BL","name":"Bolton","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }},
+{"_id":"BN","name":"Brighton","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }},
+{"_id":"BR","name":"Bromley","region":{ "$ref" : "Region", "$id" : "LONDON" }},
+{"_id":"BS","name":"Bristol","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }},
+{"_id":"BT","name":"Belfast","region":{ "$ref" : "Region", "$id" : "NI" }},
+{"_id":"CA","name":"Carlisle","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }},
+{"_id":"CB","name":"Cambridge","region":{ "$ref" : "Region", "$id" : "EAST_ANGLIA" }},
+{"_id":"CF","name":"Cardiff","region":{ "$ref" : "Region", "$id" : "WALES" }},
+{"_id":"CH","name":"Chester","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }},
+{"_id":"CM","name":"Chelmsford","region":{ "$ref" : "Region", "$id" : "EAST_ANGLIA" }},
+{"_id":"CO","name":"Colchester","region":{ "$ref" : "Region", "$id" : "EAST_ANGLIA" }},
+{"_id":"CR","name":"Croydon","region":{ "$ref" : "Region", "$id" : "LONDON" }},
+{"_id":"CT","name":"Canterbury","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }}
+,{"_id":"CV","name":"Coventry","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }}
+,{"_id":"CW","name":"Crewe","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }}
+,{"_id":"DA","name":"Dartford","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }}
+,{"_id":"DD","name":"Dundee","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }}
+,{"_id":"DE","name":"Derby","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }}
+,{"_id":"DG","name":"Dumfries","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }}
+,{"_id":"DH","name":"Durham","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }}
+,{"_id":"DL","name":"Darlington","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }}
+,{"_id":"DN","name":"Doncaster","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }}
+,{"_id":"DT","name":"Dorchester","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }}
+,{"_id":"DY","name":"Dudley","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }}
+,{"_id":"E","name":"East London","region":{ "$ref" : "Region", "$id" : "LONDON" }}
+,{"_id":"EC","name":"East London Central","region":{ "$ref" : "Region", "$id" : "LONDON" }}
+,{"_id":"EH","name":"Edinburgh","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }}
+,{"_id":"EN","name":"Enfield","region":{ "$ref" : "Region", "$id" : "LONDON" }}
+,{"_id":"EX","name":"Exeter","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }}
+,{"_id":"FK","name":"Falkirk","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }}
+,{"_id":"FY","name":"Blackpool","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }}
+,{"_id":"G","name":"Glasgow","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }}
+,{"_id":"GL","name":"Gloucester","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }}
+,{"_id":"GU","name":"Guilford","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }}
+,{"_id":"GY","name":"Guernsey & Alderney","region":{ "$ref" : "Region", "$id" : "CHANNEL" }}
+,{"_id":"HA","name":"Harrow","region":{ "$ref" : "Region", "$id" : "LONDON" }}
+,{"_id":"HD","name":"Huddersfield","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }}
+,{"_id":"HG","name":"Harrogate","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }}
+,{"_id":"HP","name":"Hemel Hempstead","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }}
+,{"_id":"HR","name":"Hereford","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }}
+,{"_id":"HS","name":"Hebrides","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }}
+,{"_id":"HU","name":"Hull","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }}
+,{"_id":"HX","name":"Halifax","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }}
+,{"_id":"IG","name":"Ilford","region":{ "$ref" : "Region", "$id" : "LONDON" }}
+,{"_id":"IM","name":"Isle of Man","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }}
+,{"_id":"IP","name":"Ipswich","region":{ "$ref" : "Region", "$id" : "EAST_ANGLIA" }}
+,{"_id":"IV","name":"Inverness","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }}
+,{"_id":"JE","name":"Jersey","region":{ "$ref" : "Region", "$id" : "CHANNEL" }}
+,{"_id":"KA","name":"Kilmarnock","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }}
+,{"_id":"KT","name":"Kingston Upon Thames","region":{ "$ref" : "Region", "$id" : "LONDON" }}
+,{"_id":"KW","name":"Kirkwall","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }}
+,{"_id":"KY","name":"Kirkcaldy","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }}
+,{"_id":"L","name":"Liverpool","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }}
+,{"_id":"LA","name":"Lancaster","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }}
+,{"_id":"LD","name":"Llandrindod Wells","region":{ "$ref" : "Region", "$id" : "WALES" }}
+,{"_id":"LE","name":"Leicester","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }}
+,{"_id":"LL","name":"Llandudno","region":{ "$ref" : "Region", "$id" : "WALES" }}
+,{"_id":"LN","name":"Lincoln","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }}
+,{"_id":"LS","name":"Leeds","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }}
+,{"_id":"LU","name":"Luton","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }}
+,{"_id":"M","name":"Manchester","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }}
+,{"_id":"ME","name":"Rochester","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }}
+,{"_id":"MK","name":"Milton Keynes","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }}
+,{"_id":"ML","name":"Motherwell","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }}
+,{"_id":"N","name":"North London","region":{ "$ref" : "Region", "$id" : "LONDON" }}
+,{"_id":"NE","name":"Newcastle","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }}
+,{"_id":"NG","name":"Nottingham","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }}
+,{"_id":"NN","name":"Northampton","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }}
+,{"_id":"NP","name":"Newport","region":{ "$ref" : "Region", "$id" : "WALES" }}
+,{"_id":"NR","name":"Norwich","region":{ "$ref" : "Region", "$id" : "EAST_ANGLIA" }}
+,{"_id":"NW","name":"North West London","region":{ "$ref" : "Region", "$id" : "LONDON" }}
+,{"_id":"OL","name":"Oldham","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }},
+{"_id":"OX","name":"Oxford","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }},
+{"_id":"PA","name":"Paisley","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }},
+{"_id":"PE","name":"Peterborough","region":{ "$ref" : "Region", "$id" : "EAST_ANGLIA" }},
+{"_id":"PH","name":"Perth","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }},
+{"_id":"PL","name":"Plymouth","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }},
+{"_id":"PO","name":"Portsmouth","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }},
+{"_id":"PR","name":"Preston","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }},
+{"_id":"RG","name":"Reading","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }},
+{"_id":"RH","name":"Redhill","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }},
+{"_id":"RM","name":"Romford","region":{ "$ref" : "Region", "$id" : "LONDON" }},
+{"_id":"S","name":"Sheffield","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }},
+{"_id":"SA","name":"Swansea","region":{ "$ref" : "Region", "$id" : "WALES" }},
+{"_id":"SE","name":"South East London","region":{ "$ref" : "Region", "$id" : "LONDON" }},
+{"_id":"SG","name":"Stevenage","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }},
+{"_id":"SK","name":"Stockport","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }},
+{"_id":"SL","name":"Slough","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }},
+{"_id":"SM","name":"Sutton","region":{ "$ref" : "Region", "$id" : "LONDON" }},
+{"_id":"SN","name":"Swindon","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }},
+{"_id":"SO","name":"Southampton","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }},
+{"_id":"SP","name":"Salisbury","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }},
+{"_id":"SS","name":"Southend","region":{ "$ref" : "Region", "$id" : "EAST_ANGLIA" }},
+{"_id":"ST","name":"Stoke","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }},
+{"_id":"SU","name":"Sunderland","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }},
+{"_id":"SW","name":"South West London","region":{ "$ref" : "Region", "$id" : "LONDON" }},
+{"_id":"SY","name":"Shrewsbury","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }},
+{"_id":"TA","name":"Taunton","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }},
+{"_id":"TD","name":"Berwick upon Tweed","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }},
+{"_id":"TF","name":"Telford","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }},
+{"_id":"TN","name":"Tunbridge Wells","region":{ "$ref" : "Region", "$id" : "SOUTH_EAST" }},
+{"_id":"TQ","name":"Torquay","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }},
+{"_id":"TR","name":"Truro","region":{ "$ref" : "Region", "$id" : "SOUTH_WEST" }},
+{"_id":"TS","name":"Middlesbrough","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }},
+{"_id":"TW","name":"Twickenham","region":{ "$ref" : "Region", "$id" : "LONDON" }},
+{"_id":"UB","name":"Uxbridge","region":{ "$ref" : "Region", "$id" : "LONDON" }},
+{"_id":"W","name":"West London","region":{ "$ref" : "Region", "$id" : "LONDON" }},
+{"_id":"WA","name":"Warrington","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }},
+{"_id":"WC","name":"Central West London","region":{ "$ref" : "Region", "$id" : "LONDON" }},
+{"_id":"WD","name":"Watford","region":{ "$ref" : "Region", "$id" : "LONDON" }},
+{"_id":"WF","name":"Wakefield","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }},
+{"_id":"WN","name":"Wigan","region":{ "$ref" : "Region", "$id" : "NORTH_WEST" }},
+{"_id":"WR","name":"Worcester","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }},
+{"_id":"WS","name":"Walsall","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }},
+{"_id":"WV","name":"Wolverhampton","region":{ "$ref" : "Region", "$id" : "MIDLANDS" }},
+{"_id":"YO","name":"York","region":{ "$ref" : "Region", "$id" : "NORTH_EAST" }},
+{"_id":"ZE","name":"Lerwick","region":{ "$ref" : "Region", "$id" : "SCOTLAND" }}
+]
+
+
+
+

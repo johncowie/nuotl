@@ -1,0 +1,12 @@
+{
+  :london 		{:name "Greater London"}
+  :wales 		{:name "Wales"}
+  :scotland 	{:name "Scotland"}
+  :ni 			{:name "Northern Ireland"}
+  :south-east 	{:name "South East England"}
+  :south-west 	{:name "South West England"}
+  :north-east 	{:name "North East England"}
+  :north-west 	{:name "North West England"}
+  :east_anglia 	{:name "East Anglia"}
+  :channel 		{:name "Channel Islands"}
+}
