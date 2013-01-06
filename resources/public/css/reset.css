@@ -20,7 +20,7 @@ td, th {
 }
 
 .container {
-        width: 800px;
+        width: 1000px;
         margin: 0 auto 0 auto;
 }
 
@@ -63,4 +63,8 @@ td, th {
 
 .name {
         width: 200px;
+}
+
+.area {
+        width: 150px;
 }

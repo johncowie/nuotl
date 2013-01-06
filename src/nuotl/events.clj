@@ -15,26 +15,27 @@
 
 (defn- split-long-event [event this-year this-month]
     (loop [date (event :start) events (transient [])]
-		(if (<= (compare-dates date (event :end)) 0)
-		  (do
+                (if (<= (compare-dates date (event :end)) 0)
+                  (do
             (if (and (= (month date) this-month) (= (year date) this-year))
-          		(conj! events (sub-event-dates event 
-                                               (if (== (compare-dates date (event :start)) 0) 
-                                                 (event :start) 
+                        (conj! events (sub-event-dates event
+                                               (if (== (compare-dates date (event :start)) 0)
+                                                 (event :start)
                                                  (date-time this-year this-month (day date))
                                                  )
                                                (if (== (compare-dates date (event :end)) 0)
                                                  (event :end)
-                                               	(date-time this-year this-month (day date) 23 59 59)
+                                                 (date-time this-year this-month (day date)
+                                                            23 59 59)
                                                 )
                                                )))
-          	(recur (plus date (days 1)) events))
+                (recur (plus date (days 1)) events))
          (persistent! events))))
 
-(defn- split-long-events [events y m] 
+(defn- split-long-events [events y m]
        (flatten (map (fn [e] (split-long-event e y m)) events)))
 
 (defn to-month [events y m]
-	(into {} (map (fn [event-group] [(event-group 0) 
-       (sort-by get-hour (event-group 1))]) 
+        (into {} (map (fn [event-group] [(event-group 0)
+       (sort-by get-hour (event-group 1))])
      (group-by get-day (split-long-events events y m)))))

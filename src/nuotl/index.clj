@@ -1,5 +1,6 @@
 (ns nuotl.index
-  (:require [clj-time.core :as time])
+  (:require [clj-time.core :as time]
+            [nuotl.areas :as areas])
   (:use
        [compojure.core]
        [compojure.route :only [not-found resources]]
@@ -24,7 +25,8 @@
                    [:td {:class "time"} (format-date (event :start))]
                    [:td {:class "time"} (format-date (event :end))]
                    [:td {:class "text"} (event :text)]
-                   [:td {:class "name"} ((event :tweeter) :display-name)]
+                  [:td {:class "name"} ((event :tweeter) :display-name)]
+                  [:td {:class "area"} ((areas/get-area (event :area)) :name)]
                    [:td
                      [:img {:src (get-profile-pic-url (event :tweeter))}]
                    ]
