@@ -1,4 +1,4 @@
-(ns sandpit.helpers.events
+(ns nuotl.events
   (:use [clj-time.core :only [date-time day month year hour plus days]]))
 
 (defn- get-day [event] (day (event :start)))

@@ -1,14 +1,14 @@
-(ns sandpit.views.welcome
+(ns nuotl.index
   (:use
        [compojure.core]
        [compojure.route :only [not-found resources]]
        [compojure.handler :only [site]]
         [hiccup.core :only [html]]
         [hiccup.page :only [include-css html5]]
-        [sandpit.dao.dao :only [get-events]]
+        [nuotl.dao :only [get-events]]
         [clj-time.format :only [unparse formatter]]
         [clj-time.core :only [now year month]]
-        [sandpit.helpers.events :only [to-month]]
+        [nuotl.events :only [to-month]]
         ))
 
 (defn format-date [date] (unparse (formatter "HH:mm") date))

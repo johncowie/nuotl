@@ -1,11 +1,11 @@
-(ns sandpit.dao.dao
+(ns nuotl.dao
   (:require
     [monger.core :as mg]
     [monger.collection :as mc]
    	[monger.joda-time]
-   	[sandpit.dao.test-data :as test-data])
+   	[nuotl.test-data :as test-data])
   (:use [clj-time.core :only [date-time plus months now year month]]
-        [sandpit.helpers.events :only [to-month]]
+        [nuotl.events :only [to-month]]
         [monger.operators]))
 
 (mg/connect!)

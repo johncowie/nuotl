@@ -1,4 +1,4 @@
-(ns sandpit.dao.test-data
+(ns nuotl.test-data
   (:use [clj-time.core :only [date-time]]))
 
 (def data [

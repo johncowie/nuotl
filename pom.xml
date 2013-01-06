@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>sandpit</groupId>
-  <artifactId>sandpit</artifactId>
+  <groupId>nuotl</groupId>
+  <artifactId>nuotl</artifactId>
   <packaging>jar</packaging>
   <version>0.1.0-SNAPSHOT</version>
-  <name>sandpit</name>
+  <name>nuotl</name>
   <description>FIXME: write this!</description>
   <scm>
-    <connection>scm:git:git://github.com/johncowie/noir-sandpit.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/johncowie/noir-sandpit.git</developerConnection>
-    <tag>6983e05ff4b2745f0a0205d77a33602b604190ad</tag>
-    <url>https://github.com/johncowie/noir-sandpit</url>
+    <connection>scm:git:git://github.com/johncowie/nuotl.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/johncowie/nuotl.git</developerConnection>
+    <tag>56f3e9ead3c8372143554d08d7313ae40fac9431</tag>
+    <url>https://github.com/johncowie/nuotl</url>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>

@@ -1,4 +1,4 @@
-(defproject sandpit "0.1.0-SNAPSHOT"
+(defproject nuotl "0.1.0-SNAPSHOT"
             :description "FIXME: write this!"
             :dependencies [[org.clojure/clojure "1.4.0"]
                            [hiccup "1.0.2"]
@@ -9,4 +9,4 @@
                            [enlive "1.0.1"]]
             :main sandpit.server
                         :plugins [[lein-ring "0.7.5"]]
-                        :ring {:handler sandpit.views.welcome/app})
+                        :ring {:handler nuotl.index/app})
