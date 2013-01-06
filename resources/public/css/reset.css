@@ -1,47 +1,51 @@
 body {
-	background-color: #aaa;
-	color: #000;
-	font-size: 20px;
-	font-family: "Verdana", sans-serif; 
+        background-color: #aaa;
+        color: #000;
+        font-size: 20px;
+        font-family: "Verdana", sans-serif;
 }
 
 table {
-	border-collapse: collapse;
-	margin-top: 20px;
-	margin-bottom: 20px;
+        border-collapse: collapse;
+        margin-top: 20px;
+        margin-bottom: 20px;
 }
 
 th {
-	text-align: left;
+        text-align: left;
 }
 
 td, th {
-	padding: 8px; 
+        padding: 8px;
 }
 
 .container {
-	width: 800px;
-	margin: 0 auto 0 auto;
+        width: 800px;
+        margin: 0 auto 0 auto;
+}
+
+.event {
+        background-color: #DDDDDD;
 }
 
 .environment {
-	background-color: #009989;
+        background-color: #009989;
 }
 
 .cuts {
-	background-color: #CE1836;
+        background-color: #CE1836;
 }
 
 .trade {
-	background-color: #F85931;	
+        background-color: #F85931;
 }
 
 .feminism {
-	background-color: #EDB92E;
+        background-color: #EDB92E;
 }
 
 .other {
-	background-color: #A3A948;
+        background-color: #A3A948;
 }
 
 .header {
@@ -49,17 +53,14 @@ td, th {
 }
 
 .time {
-	width: 50px;
-	text-align: center;
+        width: 50px;
+        text-align: center;
 }
 
 .text {
-	width: 400px;
+        width: 400px;
 }
 
 .name {
-	width: 200px;
+        width: 200px;
 }
-
-
-
