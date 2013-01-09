@@ -1,9 +1,9 @@
 (ns nuotl.events
   (:use [clj-time.core :only [date-time day month year hour plus days]]))
 
-(defn- get-day [event] (day (event :start)))
+(defn- get-day [event] (day ((event :start) :value)))
 
-(defn- get-hour [event] (hour (event :start)))
+(defn- get-hour [event] (hour ((event :start) :value)))
 
 (defn- compare-dates [date1 date2]
   (let [day1 (date-time (year date1) (month date1) (day date1))
@@ -20,13 +20,16 @@
             (if (and (= (month date) this-month) (= (year date) this-year))
                         (conj! events (sub-event-dates event
                                                (if (== (compare-dates date (event :start)) 0)
-                                                 (event :start)
-                                                 (date-time this-year this-month (day date))
+                                                 {:value (event :start) :rolled false}
+                                                 {:value (date-time this-year this-month (day date))
+                                                  :rolled true}
                                                  )
                                                (if (== (compare-dates date (event :end)) 0)
-                                                 (event :end)
-                                                 (date-time this-year this-month (day date)
-                                                            23 59 59)
+                                                 {:value (event :end) :rolled false}
+                                                 {:value (date-time this-year this-month (day date)
+                                                                    23 59 59)
+                                                  :rolled true
+                                                  }
                                                 )
                                                )))
                 (recur (plus date (days 1)) events))

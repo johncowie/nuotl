@@ -13,7 +13,11 @@
         [ring.util.response :only [redirect]]
         ))
 
-(defn format-date [date] (unparse (formatter "HH:mm") date))
+
+(defn format-date [date]
+  (if (date :rolled)
+    "--"
+    (unparse (formatter "HH:mm") (date :value))))
 
 (defn get-profile-pic-url [tweeter]
   (format
@@ -21,7 +25,8 @@
    (tweeter :name)))
 
 (defn event-row [event]
-                 [:tr {:class (format "event %s" (event :tags))}
+  [:tr {:class (format "event %s %s" (event :tags)
+                       (name ((areas/get-area (event :area)) :region)))}
                    [:td {:class "time"} (format-date (event :start))]
                    [:td {:class "time"} (format-date (event :end))]
                    [:td {:class "text"} (event :text)]
@@ -32,10 +37,43 @@
                    ]
                   ])
 
-(defn day-table [day events]
+(def day-names {1 "Monday"
+                2 "Tuesday"
+                3 "Wednesday"
+                4 "Thursday"
+                5 "Friday"
+                6 "Saturday"
+                7 "Sunday"
+                })
+
+(def month-names {1 "January"
+                  2 "February"
+                  3 "March"
+                  4 "April"
+                  5 "May"
+                  6 "June"
+                  7 "July"
+                  8 "August"
+                  9 "September"
+                  10 "October"
+                  11 "November"
+                  12 "December"
+                  })
+
+(defn day-name [d m y]
+  (day-names (time/day-of-week (time/date-time y m d 12 0 0))))
+
+(defn get-int-suffix [i]
+  (case (rem i 100)
+    (11 12 13) "th"
+    (case (rem i 10)
+      1 "st" 2 "nd" 3 "rd" "th")))
+
+(defn day-table [day month year events]
                 [:table
           [:tr {:class "header"}
-           [:th {:colspan 4} day]]
+           [:th {:colspan 4}
+            (format "%s %s%s"(day-name day month year) day (get-int-suffix day))]]
                         (for [event events]
                                 (event-row event))])
 
@@ -53,11 +91,12 @@
         (include-css "/css/reset.css")]
        [:body
         [:div {:class "container"}
+          [:h1 (format "%s %s" (month-names mth) y)]
          [:a {:href (get-relative-month-url yr mth -1)} "Previous"]
+         " "
          [:a {:href (get-relative-month-url yr mth +1)} "Next"]
-         [:h1 (format "%s/%s" y m)]
          (for [[day events] month-map]
-           (day-table day events))]]))))
+           (day-table day mth yr events))]]))))
 
 (defn current-month-url []
   (let [n (time/now)]
