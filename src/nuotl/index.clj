@@ -1,17 +1,19 @@
 (ns nuotl.index
   (:require [clj-time.core :as time]
-            [nuotl.areas :as areas])
+            [nuotl.areas :as areas]
+            [ring.adapter.jetty :as jetty])
   (:use
        [compojure.core]
        [compojure.route :only [not-found resources]]
        [compojure.handler :only [site]]
         [hiccup.core :only [html]]
         [hiccup.page :only [include-css html5]]
+        [hiccup.middleware :only [wrap-base-url]]
         [nuotl.dao :only [get-events get-features]]
         [clj-time.format :only [unparse formatter]]
         [nuotl.events :only [to-month]]
-        [ring.util.response :only [redirect]]
-        ))
+        [ring.util.response :only [redirect]])
+  (:gen-class))
 
 
 (defn format-date [date]
@@ -151,4 +153,11 @@
   (not-found "These aren't the droids you are looking for..."))
 
 (def app
-  (site app-routes))
+  (->
+   (site app-routes)
+   (wrap-base-url)))
+
+(defn -main [& args]
+  (if (not (empty? args))
+    (jetty/run-jetty app {:port (read-string (first args))})
+    (jetty/run-jetty app {:port 3000})))
