@@ -7,7 +7,7 @@
        [compojure.handler :only [site]]
         [hiccup.core :only [html]]
         [hiccup.page :only [include-css html5]]
-        [nuotl.dao :only [get-events]]
+        [nuotl.dao :only [get-events get-features]]
         [clj-time.format :only [unparse formatter]]
         [nuotl.events :only [to-month]]
         [ring.util.response :only [redirect]]
@@ -91,12 +91,27 @@
         (include-css "/css/reset.css")]
        [:body
         [:div {:class "container"}
-          [:h1 (format "%s %s" (month-names mth) y)]
+         [:a {:href "/features"} "Feature Requests"]
+         [:h1 (format "%s %s" (month-names mth) y)]
          [:a {:href (get-relative-month-url yr mth -1)} "Previous"]
          " "
          [:a {:href (get-relative-month-url yr mth +1)} "Next"]
          (for [[day events] month-map]
            (day-table day mth yr events))]]))))
+
+(defn feature-page []
+  (html5
+   [:head
+    [:title "Feature Requests"]]
+    (include-css "/css/reset.css")
+    [:body
+    [:h1 "Feature Requests"]
+    [:table
+     (for [feature (get-features)]
+       [:tr
+        [:td (unparse (formatter "dd/MM/yyyy HH:mm") (feature :created-at))]
+        [:td (format "@%s"(feature :username))]
+        [:td (feature :text)]])]]))
 
 (defn current-month-url []
   (let [n (time/now)]
@@ -106,6 +121,7 @@
 (defroutes app-routes
   (GET "/" []  (redirect (current-month-url)))
   (GET "/events/:y/:m" [y m] (event-page y m))
+  (GET "/features" [] (feature-page))
   (resources "/")
   (not-found "These aren't the droids you are looking for..."))
 
