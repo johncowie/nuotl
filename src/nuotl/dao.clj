@@ -11,13 +11,16 @@
 (mg/connect!)
 (mg/set-db! (mg/get-db "nuotl"))
 
-(defn split-event [event]
+(defn- split-event [event]
         {:event (assoc event :tweeter ((event :tweeter) :_id)) :tweeter (event :tweeter)})
 
 (defn add-event [event]
   (let [components (split-event event)]
         (mc/save "event" (components :event))
-    (mc/save "tweeter" (components :tweeter))))
+        (mc/save "tweeter" (components :tweeter))))
+
+(defn add-area [area]
+  (mc/save "area" area))
 
 (defn get-event [id]
   (mc/find-one-as-map "event" {:_id id}))
@@ -31,6 +34,3 @@
 
 (defn get-features []
   (sort-by #(% :created-at) (mc/find-maps "feature" {})))
-
-(for [e test-data/data]
-  (add-event e))
