@@ -87,11 +87,13 @@
     (let [month-map (to-month (get-events yr mth) yr mth)]
       (html5
        [:head
-        [:title (format "Next Up On The Left %s %s" y m)]
+        [:title (format "0.1.0 ALPHA - Next Up On The Left %s %s" y m)]
         (include-css "/css/reset.css")]
        [:body
         [:div {:class "container"}
          [:a {:href "/features"} "Feature Requests"]
+         " " [:a {:href "/releases"} "Releases"]
+         " " [:a {:href "/instructions"} "Instructions"]
          [:h1 (format "%s %s" (month-names mth) y)]
          [:a {:href (get-relative-month-url yr mth -1)} "Previous"]
          " "
@@ -102,16 +104,37 @@
 (defn feature-page []
   (html5
    [:head
-    [:title "Feature Requests"]]
+    [:title "Feature Requests"]
+    (include-css "/css/reset.css")]
+   [:body
+    [:div {:class "container"}
+     [:h1 "Feature Requests"]
+     [:table
+      (for [feature (get-features)]
+        [:tr
+         [:td (unparse (formatter "dd/MM/yyyy HH:mm") (feature :created-at))]
+         [:td (format "@%s"(feature :username))]
+         [:td (feature :text)]])]]]))
+
+(defn release-page []
+  (html5
+   [:head
+    [:title "Releases"]
+    (include-css "/css/reset.css")]
+   [:body
+    [:div {:class "container"}
+     [:h1 "Releases"]
+     (slurp (clojure.java.io/resource "public/templates/releases.html"))
+     ]]))
+
+(defn instructions-page []
+  (html5
+   [:head
+    [:title "Instructions"]
     (include-css "/css/reset.css")
-    [:body
-    [:h1 "Feature Requests"]
-    [:table
-     (for [feature (get-features)]
-       [:tr
-        [:td (unparse (formatter "dd/MM/yyyy HH:mm") (feature :created-at))]
-        [:td (format "@%s"(feature :username))]
-        [:td (feature :text)]])]]))
+    ]
+   [:body
+    (slurp (clojure.java.io/resource "public/templates/instructions.html"))]))
 
 (defn current-month-url []
   (let [n (time/now)]
@@ -122,6 +145,8 @@
   (GET "/" []  (redirect (current-month-url)))
   (GET "/events/:y/:m" [y m] (event-page y m))
   (GET "/features" [] (feature-page))
+  (GET "/releases" [] (release-page))
+  (GET "/instructions" [] (instructions-page))
   (resources "/")
   (not-found "These aren't the droids you are looking for..."))
 
