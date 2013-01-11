@@ -10,12 +10,14 @@
        [compojure.handler :only [site]]
         [hiccup.core :only [html]]
         [hiccup.page :only [include-css html5]]
+        [hiccup.util :only [url]]
         [hiccup.middleware :only [wrap-base-url]]
         [nuotl.dao :only [get-events get-features]]
         [clj-time.format :only [unparse formatter]]
         [nuotl.events :only [to-month]]
         )
-  (:gen-class))
+  (:gen-class)
+  )
 
 
 (defn format-date [date]
@@ -84,7 +86,7 @@
 (defn get-relative-month-url [y m diff]
   (let [rel-month (time/plus (time/date-time y m 10 0 0 0) (time/months diff))]
     (let [year (time/year rel-month) month (time/month rel-month)]
-      (format "/events/%s/%s" year month))))
+      (url (format "/events/%s/%s" year month)))))
 
 (defn event-page [y m]
   (let [yr (read-string y) mth (read-string m)]
@@ -95,9 +97,9 @@
         (include-css "/css/reset.css")]
        [:body
         [:div {:class "container"}
-         [:a {:href "/features"} "Feature Requests"]
-         " " [:a {:href "/releases"} "Releases"]
-         " " [:a {:href "/instructions"} "Instructions"]
+         [:a {:href (url "/features")} "Feature Requests"]
+         " " [:a {:href (url "/releases")} "Releases"]
+         " " [:a {:href (url "/instructions")} "Instructions"]
          [:h1 (format "%s %s" (month-names mth) y)]
          [:a {:href (get-relative-month-url yr mth -1)} "Previous"]
          " "
@@ -140,29 +142,37 @@
    [:body
     (slurp (clojure.java.io/resource "public/templates/instructions.html"))]))
 
+(def url-context (atom ""))
+
 (defn current-month-url []
   (let [n (time/now)]
-    (format "/events/%s/%s" (time/year n) (time/month n))))
-
+    (format "%s/events/%s/%s" @url-context (time/year n) (time/month n))))
 
 (defroutes app-routes
-  (GET "/" []  (ring-response/redirect (current-month-url)))
-  (GET "/events/:y/:m" [y m] (ring-response/response (event-page y m)))
-  (GET "/features" [] (ring-response/response (feature-page)))
-  (GET "/releases" [] (ring-response/response (release-page)))
-  (GET "/instructions" [] (ring-response/response (instructions-page)))
-  (resources "/")
-  (not-found "These aren't the droids you are looking for..."))
+  (context @url-context []
+           (GET "/" []  (ring-response/redirect (current-month-url)))
+           (GET "/events/:y/:m" [y m] (ring-response/content-type (ring-response/response (event-page y m)) "text/html"))
+           (GET "/features" [] (ring-response/response (feature-page)))
+           (GET "/releases" [] (ring-response/response (release-page)))
+           (GET "/instructions" [] (ring-response/response (instructions-page)))
+           (resources "/")
+           (not-found "These aren't the droids you are looking for...")))
+
+(defn request-printer [handler]
+  (fn [request]
+    (println (format "INCOMING REQUEST: %s" request))
+    (println (format "SERVER: %s:%s" (request :server-name) (request :server-port)))
+    (handler request)))
+
 
 (def app
   (->
    (site app-routes)
-   (wrap-base-url)))
+   (request-printer)
+   (wrap-base-url @url-context)))
 
 (defn -main [& args]
+  (swap! url-context (fn [a] "/blah"))
   (if (not (empty? args))
     (jetty/run-jetty app {:port (read-string (first args))})
     (jetty/run-jetty app {:port 3000})))
-
-(ring-response/redirect "/features")
-(ring-response/response "asdf")
