@@ -1,7 +1,9 @@
 (ns nuotl.index
   (:require [clj-time.core :as time]
             [nuotl.areas :as areas]
-            [ring.adapter.jetty :as jetty])
+            [ring.adapter.jetty :as jetty]
+            [ring.util.response :as ring-response]
+            )
   (:use
        [compojure.core]
        [compojure.route :only [not-found resources]]
@@ -12,7 +14,7 @@
         [nuotl.dao :only [get-events get-features]]
         [clj-time.format :only [unparse formatter]]
         [nuotl.events :only [to-month]]
-        [ring.util.response :only [redirect]])
+        )
   (:gen-class))
 
 
@@ -144,11 +146,11 @@
 
 
 (defroutes app-routes
-  (GET "/" []  (redirect (current-month-url)))
-  (GET "/events/:y/:m" [y m] (event-page y m))
-  (GET "/features" [] (feature-page))
-  (GET "/releases" [] (release-page))
-  (GET "/instructions" [] (instructions-page))
+  (GET "/" []  (ring-response/redirect (current-month-url)))
+  (GET "/events/:y/:m" [y m] (ring-response/response (event-page y m)))
+  (GET "/features" [] (ring-response/response (feature-page)))
+  (GET "/releases" [] (ring-response/response (release-page)))
+  (GET "/instructions" [] (ring-response/response (instructions-page)))
   (resources "/")
   (not-found "These aren't the droids you are looking for..."))
 
@@ -161,3 +163,6 @@
   (if (not (empty? args))
     (jetty/run-jetty app {:port (read-string (first args))})
     (jetty/run-jetty app {:port 3000})))
+
+(ring-response/redirect "/features")
+(ring-response/response "asdf")
