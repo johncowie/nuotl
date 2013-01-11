@@ -2,19 +2,19 @@
   (:require [clj-time.core :as time]
             [nuotl.areas :as areas]
             [ring.adapter.jetty :as jetty]
-            [ring.util.response :as ring-response]
-            )
+            [ring.util.response :as ring-response])
   (:use
        [compojure.core]
        [compojure.route :only [not-found resources]]
        [compojure.handler :only [site]]
         [hiccup.core :only [html]]
         [hiccup.page :only [include-css html5]]
-        [hiccup.util :only [url]]
+        [hiccup.util :only [url with-base-url]]
         [hiccup.middleware :only [wrap-base-url]]
         [nuotl.dao :only [get-events get-features]]
         [clj-time.format :only [unparse formatter]]
         [nuotl.events :only [to-month]]
+        [ring.middleware.resource :only [wrap-resource]]
         )
   (:gen-class)
   )
@@ -142,21 +142,24 @@
    [:body
     (slurp (clojure.java.io/resource "public/templates/instructions.html"))]))
 
-(def url-context (atom ""))
+(def url-context (atom "bob"))
 
 (defn current-month-url []
   (let [n (time/now)]
-    (format "%s/events/%s/%s" @url-context (time/year n) (time/month n))))
+    (format "/events/%s/%s" (time/year n) (time/month n))))
 
 (defroutes app-routes
-  (context @url-context []
-           (GET "/" []  (ring-response/redirect (current-month-url)))
-           (GET "/events/:y/:m" [y m] (ring-response/content-type (ring-response/response (event-page y m)) "text/html"))
-           (GET "/features" [] (ring-response/response (feature-page)))
-           (GET "/releases" [] (ring-response/response (release-page)))
-           (GET "/instructions" [] (ring-response/response (instructions-page)))
-           (resources "/")
-           (not-found "These aren't the droids you are looking for...")))
+  (GET "/" []  (ring-response/redirect (current-month-url)))
+  (GET "/events/:y/:m" [y m]
+       (ring-response/content-type (ring-response/response (event-page y m)) "text/html"))
+  (GET "/features" []
+       (ring-response/content-type (ring-response/response (feature-page)) "text/html"))
+  (GET "/releases" []
+       (ring-response/content-type (ring-response/response (release-page)) "text/html"))
+  (GET "/instructions" []
+       (ring-response/content-type (ring-response/response (instructions-page)) "text/html"))
+  (resources "/")
+  (not-found "These aren't the droids you are looking for..."))
 
 (defn request-printer [handler]
   (fn [request]
@@ -165,14 +168,30 @@
     (handler request)))
 
 
+(defn wrap-uri-prefix [handler prefix]
+  (fn [request]
+    (let [response (handler (assoc request
+                              :uri (clojure.string/replace-first (:uri request)
+                                                                 (re-pattern (str "^" prefix "/?"))
+                                                                 "/")))]
+      (if (<= 300 (:status response) 308) ; Only rewrite redirects
+        (assoc response
+          :headers (assoc (:headers response)
+                     "Location" (clojure.string/replace-first (get-in response [:headers "Location"])
+                                                              #"^/"
+                                                              (str prefix "/"))))
+        response))))
+
 (def app
   (->
    (site app-routes)
+   (wrap-resource "/public")
+   ;(wrap-base-url "/nuotl")
+   ;(wrap-uri-prefix "/nuotl")
    (request-printer)
-   (wrap-base-url @url-context)))
+   ))
 
 (defn -main [& args]
-  (swap! url-context (fn [a] "/blah"))
   (if (not (empty? args))
     (jetty/run-jetty app {:port (read-string (first args))})
     (jetty/run-jetty app {:port 3000})))
