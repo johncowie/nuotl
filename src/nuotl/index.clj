@@ -59,18 +59,39 @@
       (url (format "/events/%s/%s" year month)))))
 
 (defn page-container [title & content]
-  (laser/index-with-content "public/templates/index.html" title (html content)))
+  (ring-response/content-type
+   (ring-response/response
+    (laser/index-with-content "public/templates/index.html" title (html content)))
+   "text/html"
+   ))
+
+
+(defn monthValid? [m]
+  (and (= (class m) Long) (> m 0) (< m 13)))
+
+(defn yearValid? [y]
+  (and (= (class y) Long) (> y 2000) (< y 3000)))
+
+(defn monthAndYearValid? [y m]
+  (and (monthValid? m) (yearValid? y)))
 
 (defn event-page [y m]
   (let [yr (read-string y) mth (read-string m)]
-    (let [month-map (to-month (get-events yr mth) yr mth)]
-      (page-container "Next Up On The Left"
-       [:h1 (format "%s %s" (month-name mth) y)]
-       [:a {:href (get-relative-month-url yr mth -1)} "Previous"]
-       " "
-       [:a {:href (get-relative-month-url yr mth +1)} "Next"]
-       (for [[day events] month-map]
-         (day-table day mth yr events))))))
+    (if (monthAndYearValid? yr mth)
+      (let [month-map (to-month (get-events yr mth) yr mth)]
+        (page-container "Next Up On The Left"
+                        [:h1 (format "%s %s" (month-name mth) y)]
+                        [:div {:class "month-nav"}
+                         [:a {:class "previous" :href (get-relative-month-url yr mth -1)}
+                          "Previous"]
+                         " "
+                         [:a {:class "next" :href (get-relative-month-url yr mth +1)} "Next"]]
+                        [:div {:class "clear-float"}]
+                        (if (empty? month-map)
+                          [:p  "No events have been submitted yet."]
+                          (for [[day events] month-map]
+                            (day-table day mth yr events)))))
+      (page-container "Invalid URL" [:p "Invalid year/month"]))))
 
 (defn feature-page []
   (page-container "Feature Requests"
@@ -82,17 +103,22 @@
        [:td (format "@%s"(feature :username))]
        [:td (feature :text)]])]))
 
-(def release-html (slurp (clojure.java.io/resource "public/templates/releases.html")))
-(def instructions-html (slurp (clojure.java.io/resource "public/templates/instructions.html")))
+(defn release-html []  (slurp (clojure.java.io/resource "public/templates/releases.html")))
+(defn instructions-html []  (slurp (clojure.java.io/resource "public/templates/instructions.html")))
 
 (defn release-page []
   (page-container "Releases"
    [:h1 "Releases"]
-   release-html ))
+   (release-html) ))
 
 (defn instructions-page []
   (page-container "Instructions"
-   instructions-html))
+                  (instructions-html)))
+
+(defn page-404 []
+  (ring-response/status
+   (page-container "Not found" [:p "ERROR 404: These aren't the droids you are looking for"])
+   404))
 
 (defn redirect-to-current-month []
   (let [n (time/now)]
@@ -106,7 +132,7 @@
   (GET "/releases" [] (release-page))
   (GET "/instructions" [] (instructions-page))
   (resources "/")
-  (not-found "These aren't the droids you are looking for..."))
+  (ANY "*" []  (page-404)))
 
 (def app
   (->

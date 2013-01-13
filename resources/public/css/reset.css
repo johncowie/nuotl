@@ -22,14 +22,75 @@ td, th {
 }
 
 .header, .footer {
-        height: 50px;
+        height: 2.5em;
         display: block;
         background-color: #999999;
+}
+
+.nav {
+       line-height: 2em;
+       text-align: right;
+       margin-right: 30px;
+}
+
+.header a {
+       margin-right: 10px;
+}
+
+.header a {
+        vertical-align: middle;
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 1em;
+}
+
+.header a:hover {
+        color: #990000;
+}
+
+.footer {
+        line-height: 2em;
+        text-align: right;
+        padding-right: 30px;
+        color: #FFFFFF;
+}
+
+.footer a:link, .footer a:active, .footer a:visited {
+        text-decoration: none;
+        color: #FFFFFF;
+        font-size: 1em;
+}
+
+.footer a:hover {
+        color: #990000;
 }
 
 .container {
         width: 1000px;
         margin: 0 auto 0 auto;
+}
+
+.month-nav a {
+        text-decoration: none;
+        color: #FFFFFF;
+}
+
+.month-nav a:hover {
+        color: #990000;
+}
+
+a.previous {
+        float: left;
+        margin-left: 10px;
+}
+
+a.next {
+        float: right;
+        margin-right: 10px;
+}
+
+.clear-float {
+    clear: both;
 }
 
 .event {
