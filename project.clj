@@ -1,4 +1,4 @@
-(defproject nuotl "0.1.0-SNAPSHOT"
+(defproject nuotl "0.1.1"
             :description "FIXME: write this!"
             :dependencies [[org.clojure/clojure "1.4.0"]
                            [hiccup "1.0.2"]
