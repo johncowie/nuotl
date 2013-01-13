@@ -7,7 +7,8 @@
                            [cheshire "5.0.0"]
                            [compojure "1.1.3"]
                            [ring/ring-jetty-adapter "1.1.4"]
-                           [enlive "1.0.1"]]
+                           [me.raynes/laser "0.1.17"]
+                           [org.clojure/tools.logging "0.2.3"]]
              :main nuotl.index
              :plugins [[lein-ring "0.7.5"]]
              :ring {:handler nuotl.index/app})

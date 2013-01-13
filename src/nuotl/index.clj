@@ -2,7 +2,9 @@
   (:require [clj-time.core :as time]
             [nuotl.areas :as areas]
             [ring.adapter.jetty :as jetty]
-            [ring.util.response :as ring-response])
+            [ring.util.response :as ring-response]
+            [clojure.tools.logging :as log]
+            [nuotl.laser-helper :as laser])
   (:use
        [compojure.core]
        [compojure.route :only [not-found resources]]
@@ -16,10 +18,8 @@
         [nuotl.date-helper :only [month-name day-name get-int-suffix]]
         [clj-time.format :only [unparse formatter]]
         [nuotl.events :only [to-month]]
-        [ring.middleware.resource :only [wrap-resource]]
-        )
-  (:gen-class)
-  )
+        [ring.middleware.resource :only [wrap-resource]])
+  (:gen-class))
 
 
 (defn format-date [date]
@@ -47,7 +47,7 @@
 
 (defn day-table [day month year events]
                 [:table
-          [:tr {:class "header"}
+          [:tr {:class "day-header"}
            [:th {:colspan 4}
             (format "%s %s%s"(day-name day month year) day (get-int-suffix day))]]
                         (for [event events]
@@ -59,19 +59,7 @@
       (url (format "/events/%s/%s" year month)))))
 
 (defn page-container [title & content]
-  (ring-response/content-type
-   (ring-response/response
-    (html5
-     [:head
-      [:title (format "0.1.0 ALPHA - %s" title)]
-      (include-css "/css/reset.css")]
-     [:body
-      [:div {:class "container"}
-       [:a {:href (url "/")} "Events"]
-       " " [:a {:href (url "/features")} "Feature Requests"]
-       " " [:a {:href (url "/releases")} "Releases"]
-       " " [:a {:href (url "/instructions")} "Instructions"]
-       content]])) "text/html"))
+  (laser/index-with-content "public/templates/index.html" title (html content)))
 
 (defn event-page [y m]
   (let [yr (read-string y) mth (read-string m)]
@@ -112,8 +100,8 @@
      (format "/events/%s/%s" (time/year n) (time/month n)))))
 
 (defroutes app-routes
-  (GET "/" []  (redirect-to-current-month))
-  (GET "/events/:y/:m" [y m] (event-page y m))
+  (GET "/" [] (redirect-to-current-month))
+  (GET "/events/:y/:m" [y m]  (event-page y m))
   (GET "/features" [] (feature-page))
   (GET "/releases" [] (release-page))
   (GET "/instructions" [] (instructions-page))
