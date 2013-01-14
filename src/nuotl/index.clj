@@ -120,13 +120,20 @@
    (page-container "Not found" [:p "ERROR 404: These aren't the droids you are looking for"])
    404))
 
-(defn redirect-to-current-month []
+(defn redirect-to-current []
   (let [n (time/now)]
     (ring-response/redirect
      (format "/events/%s/%s" (time/year n) (time/month n)))))
 
+(defn redirect-to-current-month [year]
+  (let [n (time/now)]
+    (ring-response/redirect
+     (format "/events/%s/%s" year (time/month n)))))
+
 (defroutes app-routes
-  (GET "/" [] (redirect-to-current-month))
+  (GET "/" [] (redirect-to-current))
+  (GET "/events/:y/" [y] (redirect-to-current-month y))
+  (GET "/events/:y" [y] (redirect-to-current-month y))
   (GET "/events/:y/:m" [y m]  (event-page y m))
   (GET "/features" [] (feature-page))
   (GET "/releases" [] (release-page))
