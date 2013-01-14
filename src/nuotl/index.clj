@@ -32,9 +32,27 @@
    "https://api.twitter.com/1/users/profile_image?screen_name=%s&size=bigger"
    (tweeter :name)))
 
+(defn event-region [event]
+  (name ((areas/get-area (event :area)) :region)))
+
+(defn expired? [end-time]
+  (let [n (time/now)]
+    (< (compare end-time n) 0)))
+
+(defn event-status [event]
+  (let [end-time ((event :end) :value)]
+    (if (expired? end-time)
+      "expired"
+      "")))
+
+(defn day-status [y m d]
+  (if (expired? (time/date-time y m d))
+    "expired"
+    "" ))
+
 (defn event-row [event]
-  [:tr {:class (format "event %s %s" (event :tags)
-                       (name ((areas/get-area (event :area)) :region)))}
+  [:tr {:class (format "event %s %s %s" (event :tags)
+                       (event-status event) (event-region event))}
                    [:td {:class "time"} (format-date (event :start))]
                    [:td {:class "time"} (format-date (event :end))]
                    [:td {:class "text"} (event :text)]
@@ -42,13 +60,12 @@
                   [:td {:class "area"} ((areas/get-area (event :area)) :name)]
                    [:td
                      [:img {:src (get-profile-pic-url (event :tweeter))}]
-                   ]
-                  ])
+                   ]])
 
 (defn day-table [day month year events]
                 [:table
           [:tr {:class "day-header"}
-           [:th {:colspan 4}
+           [:th {:class "expired" :colspan 4}
             (format "%s %s%s"(day-name day month year) day (get-int-suffix day))]]
                         (for [event events]
                                 (event-row event))])
@@ -64,7 +81,6 @@
     (laser/index-with-content "public/templates/index.html" title (html content)))
    "text/html"
    ))
-
 
 (defn monthValid? [m]
   (and (= (class m) Long) (> m 0) (< m 13)))

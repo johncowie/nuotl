@@ -17,6 +17,10 @@ th {
         text-align: left;
 }
 
+th.expired {
+        color: #888888;
+}
+
 td, th {
         padding: 8px;
 }
@@ -115,6 +119,11 @@ a.next {
 
 .other {
         background-color: #A3A948;
+}
+
+.event.expired {
+        background-color: #999999;
+        color: #bbbbbb;
 }
 
 .header {

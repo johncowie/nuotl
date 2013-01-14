@@ -2,8 +2,7 @@
   (:require
     [monger.core :as mg]
     [monger.collection :as mc]
-        [monger.joda-time]
-        [nuotl.test-data :as test-data])
+        [monger.joda-time])
   (:use [clj-time.core :only [date-time plus months now year month]]
         [nuotl.events :only [to-month]]
         [monger.operators]))
