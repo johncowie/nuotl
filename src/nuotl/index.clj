@@ -45,8 +45,9 @@
       "expired"
       "")))
 
+
 (defn day-status [y m d]
-  (if (expired? (time/date-time y m d))
+  (if (expired? (time/plus (time/date-time y m d) (time/days 1)))
     "expired"
     "" ))
 
@@ -65,7 +66,7 @@
 (defn day-table [day month year events]
                 [:table
           [:tr {:class "day-header"}
-           [:th {:class "expired" :colspan 4}
+           [:th {:class (day-status year month day) :colspan 4}
             (format "%s %s%s"(day-name day month year) day (get-int-suffix day))]]
                         (for [event events]
                                 (event-row event))])
