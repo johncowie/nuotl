@@ -11,6 +11,9 @@ table {
         border-collapse: collapse;
         margin-top: 20px;
         margin-bottom: 20px;
+        margin-left: 0px;
+        margin-right: 0px;
+        min-width: 1000px;
 }
 
 th {
@@ -22,7 +25,18 @@ th.expired {
 }
 
 td, th {
-        padding: 8px;
+        padding: 4px;
+}
+
+img.profile {
+        height: 30px;
+        width: 30px;
+}
+
+tr.event {
+        border-bottom-style: solid;
+        border-bottom-width: 10px;
+        border-bottom-color: #aaaaaa;
 }
 
 td {
@@ -89,12 +103,12 @@ td {
 
 a.previous {
         float: left;
-        margin-left: 10px;
+        margin-left: 200px;
 }
 
 a.next {
         float: right;
-        margin-right: 10px;
+        margin-right: 200px;
 }
 
 .clear-float {
@@ -125,7 +139,7 @@ a.next {
         background-color: #A3A948;
 }
 
-.event.expired {
+.event.expired > td {
         background-color: #999999;
         color: #bbbbbb;
 }

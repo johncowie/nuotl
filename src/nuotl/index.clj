@@ -29,7 +29,7 @@
 
 (defn get-profile-pic-url [tweeter]
   (format
-   "https://api.twitter.com/1/users/profile_image?screen_name=%s&size=bigger"
+   "https://api.twitter.com/1/users/profile_image?screen_name=%s&size=normal"
    (tweeter :name)))
 
 (defn event-region [event]
@@ -60,7 +60,7 @@
                   [:td {:class "name"} ((event :tweeter) :display-name)]
                   [:td {:class "area"} ((areas/get-area (event :area)) :name)]
                    [:td
-                     [:img {:src (get-profile-pic-url (event :tweeter))}]
+                     [:img {:class "profile" :src (get-profile-pic-url (event :tweeter))}]
                    ]])
 
 (defn day-table [day month year events]
