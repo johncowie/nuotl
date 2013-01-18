@@ -10,7 +10,7 @@
   <scm>
     <connection>scm:git:git://github.com/johncowie/nuotl.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/johncowie/nuotl.git</developerConnection>
-    <tag>ba4bb925356e7908c47c5d09397ee6c6518ab4f1</tag>
+    <tag>f430bd576da0be5774b095b7d45ff8788ce23486</tag>
     <url>https://github.com/johncowie/nuotl</url>
   </scm>
   <build>
@@ -99,6 +99,11 @@
       <groupId>org.clojure</groupId>
       <artifactId>tools.logging</artifactId>
       <version>0.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>midje</groupId>
+      <artifactId>midje</artifactId>
+      <version>1.4.0</version>
     </dependency>
   </dependencies>
 </project>

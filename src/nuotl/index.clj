@@ -22,10 +22,10 @@
   (:gen-class))
 
 
-(defn format-date [date]
-  (if (date :rolled)
+(defn format-date [date rolled?]
+  (if rolled?
     "--"
-    (unparse (formatter "HH:mm") (date :value))))
+    (unparse (formatter "HH:mm") date)))
 
 (defn get-profile-pic-url [tweeter]
   (format
@@ -40,7 +40,7 @@
     (< (compare end-time n) 0)))
 
 (defn event-status [event]
-  (let [end-time ((event :end) :value)]
+  (let [end-time (event :end)]
     (if (expired? end-time)
       "expired"
       "")))
@@ -54,8 +54,8 @@
 (defn event-row [event]
   [:tr {:class (format "event %s %s %s" (event :tags)
                        (event-status event) (event-region event))}
-                   [:td {:class "time"} (format-date (event :start))]
-                   [:td {:class "time"} (format-date (event :end))]
+                   [:td {:class "time"} (format-date (event :start) (event :start-rolled))]
+                   [:td {:class "time"} (format-date (event :end) (event :end-rolled))]
                    [:td {:class "text"} (event :text)]
                   [:td {:class "name"} ((event :tweeter) :display-name)]
                   [:td {:class "area"} ((areas/get-area (event :area)) :name)]

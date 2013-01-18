@@ -1,39 +1,38 @@
-(nuotl.events
+(ns nuotl.events
   (:use [clj-time.core :only [date-time day month year hour plus days]]))
 
-(defn- get-day [event] (day ((event :start) :value)))
+(defn- get-day [event] (day (event :start)))
 
-(defn- get-hour [event] (hour ((event :start) :value)))
+; TODO change this to get-second, so sorting is done properly
+(defn- get-hour [event] (hour (event :start)))
 
-(defn- compare-dates [date1 date2]
+(defn compare-dates [date1 date2]
   (let [day1 (date-time (year date1) (month date1) (day date1))
         day2 (date-time (year date2) (month date2) (day date2))]
     (compare day1 day2)))
 
-(defn- sub-event-dates [event start end]
- (assoc (assoc event :start start) :end end))
+(defn- sub-event-dates [event current start end start-rolled? end-rolled?]
+  (let [s (if start-rolled? (date-time (year current) (month current) (day current) 0 0 0) start)
+        e (if end-rolled? (date-time (year current) (month current) (day current) 23 59 59) end)]
+    (merge event {:start s :end e :start-rolled start-rolled? :end-rolled end-rolled?})))
 
-(defn- split-long-event [event this-year this-month]
+(defn date-in-month? [date y m]
+  (and (= (year date) y) (= (month date) m)))
+
+(defn split-long-event [event this-year this-month]
     (loop [date (event :start) events (transient [])]
                 (if (<= (compare-dates date (event :end)) 0)
                   (do
-            (if (and (= (month date) this-month) (= (year date) this-year))
-                        (conj! events (sub-event-dates event
-                                               (if (== (compare-dates date (event :start)) 0)
-                                                 {:value (event :start) :rolled false}
-                                                 {:value (date-time this-year this-month (day date))
-                                                  :rolled true}
-                                                 )
-                                               (if (== (compare-dates date (event :end)) 0)
-                                                 {:value (event :end) :rolled false}
-                                                 {:value (date-time this-year this-month (day date)
-                                                                    23 59 59)
-                                                  :rolled true
-                                                  }
-                                                )
-                                               )))
-                (recur (plus date (days 1)) events))
-         (persistent! events))))
+            (if (date-in-month? date this-year this-month)
+              (conj! events (sub-event-dates event
+                                             date
+                                             (event :start)
+                                             (event :end)
+                                             (not= (compare-dates date (event :start)) 0)
+                                             (not= (compare-dates date (event :end)) 0)
+                                             )))
+            (recur (plus date (days 1)) events))
+                  (persistent! events))))
 
 (defn- split-long-events [events y m]
        (flatten (map (fn [e] (split-long-event e y m)) events)))
