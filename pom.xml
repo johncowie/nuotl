@@ -4,13 +4,13 @@
   <groupId>nuotl</groupId>
   <artifactId>nuotl</artifactId>
   <packaging>jar</packaging>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.1.1</version>
   <name>nuotl</name>
   <description>FIXME: write this!</description>
   <scm>
     <connection>scm:git:git://github.com/johncowie/nuotl.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/johncowie/nuotl.git</developerConnection>
-    <tag>908ae3bf6a4254b772c9c344bd24b4db90b23a83</tag>
+    <tag>ba4bb925356e7908c47c5d09397ee6c6518ab4f1</tag>
     <url>https://github.com/johncowie/nuotl</url>
   </scm>
   <build>
@@ -94,6 +94,11 @@
       <groupId>me.raynes</groupId>
       <artifactId>laser</artifactId>
       <version>0.1.17</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>tools.logging</artifactId>
+      <version>0.2.3</version>
     </dependency>
   </dependencies>
 </project>
