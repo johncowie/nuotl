@@ -25,6 +25,10 @@ td, th {
         padding: 8px;
 }
 
+td {
+        margin-bottom: 5px;
+}
+
 .header, .footer {
         height: 2.5em;
         display: block;
