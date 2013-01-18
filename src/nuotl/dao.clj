@@ -26,10 +26,23 @@
 
 (defn get-events [y m]
   (let [start-date (date-time y m) end-date (plus (date-time y m) (months 1))]
-        (let [events (mc/find-maps "event" {:start {$gte start-date $lt end-date}}) updated-events (transient [])]
+    (let [events
+          (mc/find-maps "event" {:start {$gte start-date $lt end-date}})
+          updated-events (transient [])]
       (doseq [event events]
-        (conj! updated-events (assoc event :tweeter (mc/find-one-as-map "tweeter" {:_id (event :tweeter)}))))
+        (conj! updated-events
+               (assoc event :tweeter
+                      (mc/find-one-as-map "tweeter" {:_id (event :tweeter)}))))
       (persistent! updated-events))))
+
+(defn approved? [event]
+  (= ((event :tweeter) :approved) "Y"))
+
+(defn get-approved-events [y m]
+  (filter approved? (get-events y m)))
 
 (defn get-features []
   (sort-by #(% :created-at) (mc/find-maps "feature" {})))
+
+
+(filter #(= (rem % 2) 0) [1 2 3 4 5 6 7])
