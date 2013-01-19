@@ -55,6 +55,15 @@ td {
       float: left;
 }
 
+.version {
+     height: 4em;
+     line-height: 4em;
+     width: 200px;
+     float: left;
+     margin-left: 100px;
+     color: #ffffff;
+}
+
 .nav {
        height: 4em;
        width: 800px;

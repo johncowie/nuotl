@@ -19,6 +19,12 @@
    "https://api.twitter.com/1/users/profile_image?screen_name=%s&size=normal"
    (tweeter :name)))
 
+(defn- get-tweeter-url [tweeter]
+  (url
+   (format
+         "https://twitter.com/%s"
+         (tweeter :name))))
+
 (defn- event-region [event]
   (name ((areas/get-area (event :area)) :region)))
 
@@ -55,10 +61,13 @@
                    [:td {:class "time"} (format-date (event :start) (event :start-rolled))]
                    [:td {:class "time"} (format-date (event :end) (event :end-rolled))]
                    [:td {:class "text"} (event :text)]
-                  [:td {:class "name"} ((event :tweeter) :display-name)]
+                   [:td {:class "name"}
+                    [:a {:href (get-tweeter-url (event :tweeter))}
+                     ((event :tweeter) :display-name)]]
                   [:td {:class "area"} ((areas/get-area (event :area)) :name)]
-                   [:td
-                     [:img {:class "profile" :src (get-profile-pic-url (event :tweeter))}]
+                  [:td
+                    [:a {:href (get-tweeter-url (event :tweeter))}
+                    [:img {:class "profile" :src (get-profile-pic-url (event :tweeter))}]]
                     ]])
 
 (defn- day-table [day month year events]
@@ -127,3 +136,6 @@
   (ring-response/status
    (page-container "Not found" [:p "ERROR 404: These aren't the droids you are looking for"])
    404))
+
+
+(clojure.java.io/resource "project.clj")
