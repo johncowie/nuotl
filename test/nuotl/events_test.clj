@@ -4,11 +4,16 @@
             [clj-time.core :as t]
             ))
 
-(def test-event {
-                 :stuff "I am an event"
-                 :start (t/date-time 2013 1 15 7)
-                 :end (t/date-time 2013 1 16 9)
-                 })
+(def test-events [
+                  {:id 101
+                   :start (t/date-time 2013 1 15 7)
+                   :end (t/date-time 2013 1 16 9)
+                   :tweeter {:approved "Y"}}
+                  {:id 102
+                   :start (t/date-time 2013 1 15 7)
+                   :end (t/date-time 2013 1 16 9)
+                   :tweeter {:approved "N"}}
+                  ])
 
 
 (facts
@@ -24,3 +29,9 @@
  (e/date-in-month? (t/date-time 2013 1 15) 2013 2) => false
  (e/date-in-month? (t/date-time 2013 1 15) 2012 1) => false
  )
+
+(facts
+ (let [approved (e/get-approved test-events)]
+   (count approved) => 1
+   ((nth approved 0) :id) => 101
+   ))

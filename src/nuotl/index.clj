@@ -14,7 +14,7 @@
         [hiccup.util :only [url with-base-url]]
         [hiccup.middleware :only [wrap-base-url]]
         [nuotl.middleware :only [request-printer wrap-uri-prefix]]
-        [nuotl.dao :only [get-approved-events get-features]]
+        [nuotl.dao :only [get-events get-features]]
         [nuotl.date-helper :only [month-name day-name get-int-suffix]]
         [clj-time.format :only [unparse formatter]]
         [nuotl.events :only [to-month]]
@@ -95,7 +95,7 @@
 (defn event-page [y m]
   (let [yr (read-string y) mth (read-string m)]
     (if (monthAndYearValid? yr mth)
-      (let [month-map (to-month (get-approved-events yr mth) yr mth)]
+      (let [month-map (to-month (get-events yr mth) yr mth)]
         (page-container "Next Up On The Left"
                         [:h1 (format "%s %s" (month-name mth) y)]
                         [:div {:class "month-nav"}

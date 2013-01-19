@@ -35,14 +35,5 @@
                       (mc/find-one-as-map "tweeter" {:_id (event :tweeter)}))))
       (persistent! updated-events))))
 
-(defn approved? [event]
-  (= ((event :tweeter) :approved) "Y"))
-
-(defn get-approved-events [y m]
-  (filter approved? (get-events y m)))
-
 (defn get-features []
   (sort-by #(% :created-at) (mc/find-maps "feature" {})))
-
-
-(filter #(= (rem % 2) 0) [1 2 3 4 5 6 7])

@@ -1,10 +1,10 @@
 (ns nuotl.events
-  (:use [clj-time.core :only [date-time day month year hour plus days]]))
+  (:use [clj-time.core :only [date-time day month year hour minute sec plus days]]))
 
 (defn- get-day [event] (day (event :start)))
 
-; TODO change this to get-second, so sorting is done properly
-(defn- get-hour [event] (hour (event :start)))
+(defn- get-day-seconds [event]
+  (+ (sec (event :start)) (* (hour (event :start)) 3600) (* (minute (event :start)) 60)))
 
 (defn compare-dates [date1 date2]
   (let [day1 (date-time (year date1) (month date1) (day date1))
@@ -35,9 +35,12 @@
                   (persistent! events))))
 
 (defn- split-long-events [events y m]
-       (flatten (map (fn [e] (split-long-event e y m)) events)))
+  (flatten (map (fn [e] (split-long-event e y m)) events)))
+
+(defn get-approved [events]
+  (filter #(= ((% :tweeter) :approved) "Y")  events))
 
 (defn to-month [events y m]
         (into {} (map (fn [event-group] [(event-group 0)
-       (sort-by get-hour (event-group 1))])
-     (group-by get-day (split-long-events events y m)))))
+       (sort-by get-day-seconds (event-group 1))])
+         (group-by get-day (split-long-events (get-approved events) y m)))))
