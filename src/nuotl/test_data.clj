@@ -17,5 +17,3 @@
 
 (defn add-test-data []
   (map dao/add-event data))
-
-(add-test-data)

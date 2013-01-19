@@ -44,8 +44,13 @@
     (event :_id)
     ))
 
+(defn- fix-tags [tags]
+  (clojure.string/join " "
+    (map #(format "tag-%s" %) (clojure.string/split tags #" "))))
+
+
 (defn- event-row [event]
-  [:tr {:id (get-row-id event) :class (format "event %s %s %s" (event :tags)
+  [:tr {:id (get-row-id event) :class (format "event %s %s %s" (fix-tags (event :tags))
                        (event-status event) (event-region event))}
                    [:td {:class "time"} (format-date (event :start) (event :start-rolled))]
                    [:td {:class "time"} (format-date (event :end) (event :end-rolled))]
