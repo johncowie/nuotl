@@ -10,7 +10,7 @@
   <scm>
     <connection>scm:git:git://github.com/johncowie/nuotl.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/johncowie/nuotl.git</developerConnection>
-    <tag>de7d6fff380e12de550a08d789bc52ac98c41402</tag>
+    <tag>26045b82cc8aa8ba9fe10f16508602ab3df9189c</tag>
     <url>https://github.com/johncowie/nuotl</url>
   </scm>
   <build>
