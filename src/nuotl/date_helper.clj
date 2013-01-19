@@ -1,5 +1,6 @@
 (ns nuotl.date-helper
-  (:require [clj-time.core :as time]))
+  (:require [clj-time.core :as time]
+            [clj-time.format :as format]))
 
 (def day-names {1 "Monday"
                 2 "Tuesday"
@@ -42,3 +43,8 @@
 
 (defn month-year-valid? [y m]
   (and (month-valid? m) (year-valid? y)))
+
+(defn format-date [date rolled?]
+  (if rolled?
+    "--"
+    (format/unparse (format/formatter "HH:mm") date)))
