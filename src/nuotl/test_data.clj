@@ -4,16 +4,18 @@
 
 (def data [
     {
-        :_id 76
-        :start (date-time 2013 1 15 9)
-        :end (date-time 2013 1 15 9 1)
-        :text "Rememberance of Aaron Swartz"
-        :tweeter {:name "thought works" :display-name "ThoughtWorks"
-                  :_id "1" :approved "yes"}
-        :tags "environment"
+        :_id (rand-int 100000)
+        :start (date-time 2013 1 20 18 03)
+        :end (date-time 2013 1 20 20)
+        :text "Party <a href=\"bbc.co.uk\">the beeb</a>   "
+        :tweeter {:name "thoughtworks" :display-name "ThoughtWorks"
+                  :_id "1" :approved "Y"}
+        :tags "feminism"
         :area "N"
      }
 ])
 
 (defn add-test-data []
   (map dao/add-event data))
+
+(add-test-data)
