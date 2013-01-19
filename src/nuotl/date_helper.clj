@@ -33,3 +33,12 @@
     (11 12 13) "th"
     (case (rem i 10)
       1 "st" 2 "nd" 3 "rd" "th")))
+
+(defn month-valid? [m]
+  (and (= (class m) Long) (> m 0) (< m 13)))
+
+(defn year-valid? [y]
+  (and (= (class y) Long) (> y 2000) (< y 3000)))
+
+(defn month-year-valid? [y m]
+  (and (month-valid? m) (year-valid? y)))

@@ -51,8 +51,14 @@
     "expired"
     "" ))
 
+(defn get-row-id [event]
+  (if (event :start-rolled)
+    nil
+    (event :_id)
+    ))
+
 (defn event-row [event]
-  [:tr {:class (format "event %s %s %s" (event :tags)
+  [:tr {:id (get-row-id event) :class (format "event %s %s %s" (event :tags)
                        (event-status event) (event-region event))}
                    [:td {:class "time"} (format-date (event :start) (event :start-rolled))]
                    [:td {:class "time"} (format-date (event :end) (event :end-rolled))]
@@ -61,7 +67,9 @@
                   [:td {:class "area"} ((areas/get-area (event :area)) :name)]
                    [:td
                      [:img {:class "profile" :src (get-profile-pic-url (event :tweeter))}]
-                   ]])
+                    ]])
+
+(html5 [:div {:id nil} "a"])
 
 (defn day-table [day month year events]
                 [:table
