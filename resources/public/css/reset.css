@@ -180,6 +180,11 @@ a.next {
     color: #dddddd;
 }
 
+.expired img {
+    opacity:0.3;
+    filter:alpha(opacity=30);
+}
+
 .header {
 
 }

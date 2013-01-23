@@ -51,8 +51,7 @@
     ))
 
 (defn- fix-tags [tags]
-  (clojure.string/join " "
-    (map #(format "tag-%s" %) (clojure.string/split tags #" "))))
+  (clojure.string/join " " (map #(format "tag-%s" %) tags)))
 
 
 (defn- event-row [event]
