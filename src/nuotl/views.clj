@@ -50,8 +50,15 @@
     (event :_id)
     ))
 
+; needed for backward data compatibility
+(defn- get-tag-array [tags]
+  (if (= (class tags) java.lang.String)
+    (clojure.string/split tags #" ")
+    tags))
+
 (defn- fix-tags [tags]
-  (clojure.string/join " " (map #(format "tag-%s" %) tags)))
+  (let [tag-array (get-tag-array tags)])
+  (clojure.string/join " " (map #(format "tag-%s" %) tag-array)))
 
 
 (defn- event-row [event]
