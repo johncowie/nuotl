@@ -89,10 +89,26 @@
     (let [year (time/year rel-month) month (time/month rel-month)]
       (url (format "/events/%s/%s" year month)))))
 
+(defn tidyHTML [html]
+  (let [is (java.io.ByteArrayInputStream. (. html (getBytes)))
+        os (java.io.StringWriter. )
+        tidy (org.w3c.tidy.Tidy.)]
+    (. tidy (setTidyMark false))
+    (. tidy (setQuiet true))
+    (. tidy (setShowErrors 0))
+    (. tidy (setShowWarnings false))
+    (. tidy (setIndentContent true))
+    (. tidy (setTrimEmptyElements false))
+    (. tidy (parse is os))
+    (. os (toString))))
+
+(tidyHTML "blah")
+
 (defn page-container [title & content]
   (ring-response/content-type
    (ring-response/response
-    (laser/index-with-content "public/templates/index.html" title (html content)))
+    (tidyHTML
+     (laser/index-with-content "public/templates/index.html" title (html content))))
    "text/html"
    ))
 
@@ -142,6 +158,3 @@
   (ring-response/status
    (page-container "Not found" [:p "ERROR 404: These aren't the droids you are looking for"])
    404))
-
-
-(clojure.java.io/resource "project.clj")

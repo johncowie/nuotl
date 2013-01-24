@@ -10,6 +10,7 @@
                            [me.raynes/laser "0.1.17"]
                            [org.clojure/tools.logging "0.2.3"]
                            [midje "1.4.0"]
+                           [net.sf.jtidy/jtidy "r938"]
                            ]
              :main nuotl.index
              :plugins [[lein-ring "0.7.5"]
