@@ -90,19 +90,26 @@
       (url (format "/events/%s/%s" year month)))))
 
 (defn tidyHTML [html]
-  (let [is (java.io.ByteArrayInputStream. (. html (getBytes)))
-        os (java.io.StringWriter. )
-        tidy (org.w3c.tidy.Tidy.)]
-    (. tidy (setTidyMark false))
-    (. tidy (setQuiet true))
-    (. tidy (setShowErrors 0))
-    (. tidy (setShowWarnings false))
-    (. tidy (setIndentContent true))
-    (. tidy (setTrimEmptyElements false))
-    (. tidy (parse is os))
-    (. os (toString))))
-
-(tidyHTML "blah")
+  (if false
+    (let [is (java.io.ByteArrayInputStream. (. html (getBytes)))
+          os (java.io.StringWriter. )
+          tidy (org.w3c.tidy.Tidy.)]
+      (. tidy (setTidyMark false))
+      (. tidy (setAsciiChars false))
+      (println (. tidy (getInputEncoding)))
+      (println (. tidy (getOutputEncoding)))
+      (. tidy (setOutputEncoding "UTF8"))
+      (. tidy (setInputEncoding "UTF8"))
+      (. tidy (setRawOut true))
+      (. tidy (setQuiet true))
+      (. tidy (setShowErrors 0))
+      (. tidy (setShowWarnings false))
+      (. tidy (setIndentContent true))
+      (. tidy (setTrimEmptyElements false))
+      (. tidy (parse is os))
+      (. os (toString)))
+    html
+    ))
 
 (defn page-container [title & content]
   (ring-response/content-type
