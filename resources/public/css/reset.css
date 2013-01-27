@@ -1,48 +1,11 @@
 body {
         margin: 0;
         padding: 0;
-        background-color: #999999;
-        color: #000;
+        background-color: #EEEEEE;
+        Color: #000;
         font-size: 20px;
         font-family: "Verdana", sans-serif;
 }
-
-table {
-        border-collapse: collapse;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 0px;
-        margin-right: 0px;
-        min-width: 1000px;
-}
-
-th {
-        text-align: left;
-}
-
-th.expired {
-        color: #888888;
-}
-
-td, th {
-        padding: 4px;
-}
-
-img.profile {
-        height: 30px;
-        width: 30px;
-}
-
-tr.event {
-        border-bottom-style: solid;
-        border-bottom-width: 10px;
-        border-bottom-color: #999999;
-}
-
-td {
-        margin-bottom: 5px;
-}
-
 
 .header, .footer {
         height: 2em;
@@ -111,25 +74,49 @@ td {
 
 .month-nav a {
         text-decoration: none;
-        color: #FFFFFF;
-}
-
-.month-nav a:hover {
         color: #990000;
 }
 
-a.previous {
-        float: left;
-        margin-left: 200px;
+.month-nav a:hover {
+        color: #996600;
 }
 
-a.next {
-        float: right;
-        margin-right: 200px;
+.prev, .next {
+        font-size: 3em;
+}
+
+.prev, .next, .month-name {
+        display: inline;
+        vertical-align: middle;
+}
+
+.month-name {
+        margin-left: 20px;
+        margin-right: 20px;
+}
+
+.month-nav {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
 }
 
 .clear-float {
     clear: both;
+}
+
+.day-header {
+        margin-top: 30px;
+        margin-bottom: 30px;
+}
+
+.event {
+        background-color: #AAAAAA;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 0.8em;
+        padding: 10px;
 }
 
 .event a {
@@ -137,38 +124,11 @@ a.next {
     color: #FFFFFF;
 }
 
-.event a:hover {
-    color: #990000;
-}
-
-.event {
-        background-color: #DDDDDD;
-}
-
-.tag-environment {
-        background-color: #009989;
-}
-
-.tag-cuts {
-        background-color: #CE1836;
-}
-
-.tag-trade {
-        background-color: #F85931;
-}
-
-.tag-feminism {
-        background-color: #EDB92E;
-}
-
-.tag-other {
-        background-color: #A3A948;
-}
-
-.event.expired > td {
-        background-color: #999999;
-        color: #bbbbbb;
-}
+.tag-environment { background-color: #009989; }
+.tag-cuts { background-color: #CE1836; }
+.tag-trade { background-color: #F85931; }
+.tag-feminism { background-color: #EDB92E; }
+.tag-other { background-color: #A3A948; }
 
 .expired a {
     color: #bbbbbb;
@@ -183,23 +143,50 @@ a.next {
     filter:alpha(opacity=30);
 }
 
-.header {
+.expired {
+        color: #888888;
+}
 
+.expired.event {
+    background-color: #cccccc;
+}
+
+.event a:hover {
+    color: #990000;
+}
+
+
+.data {
+       margin-right: 10px;
 }
 
 .time {
+        display: inline-block;
         width: 50px;
         text-align: center;
 }
 
 .text {
-        width: 400px;
+        display: inline-block;
+        width: 500px;
 }
 
 .name {
-        width: 200px;
+        display: inline-block;
+        width: 150px;
 }
 
 .area {
+        display: inline-block;
         width: 150px;
+}
+
+.profile {
+        display: inline-block;
+}
+
+.profile img {
+        vertical-align: middle;
+        height: 30px;
+        width: 30px;
 }

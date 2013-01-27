@@ -62,27 +62,26 @@
 
 
 (defn- event-row [event]
-  [:tr {:id (get-row-id event) :class (format "event %s %s %s" (fix-tags (event :tags))
+  [:div {:id (get-row-id event) :class (format "event %s %s %s" (fix-tags (event :tags))
                        (event-status event) (event-region event))}
-                   [:td {:class "time"} (format-date (event :start) (event :start-rolled))]
-                   [:td {:class "time"} (format-date (event :end) (event :end-rolled))]
-                   [:td {:class "text"} (event :text)]
-                   [:td {:class "name"}
+                   [:span {:class "data time"} (format-date (event :start) (event :start-rolled))]
+                   [:span {:class "data time"} (format-date (event :end) (event :end-rolled))]
+                   [:span {:class "data text"} (event :text)]
+                   [:span {:class "data name"}
                     [:a {:href (get-tweeter-url (event :tweeter))}
                      ((event :tweeter) :display-name)]]
-                  [:td {:class "area"} ((areas/get-area (event :area)) :name)]
-                  [:td
+                  [:span {:class "data area"} ((areas/get-area (event :area)) :name)]
+                  [:span {:class "profile"}
                     [:a {:href (get-tweeter-url (event :tweeter))}
-                    [:img {:class "profile" :src (get-profile-pic-url (event :tweeter))}]]
+                    [:img {:src (get-profile-pic-url (event :tweeter))}]]
                     ]])
 
 (defn- day-table [day month year events]
-                [:table
-          [:tr {:class "day-header"}
-           [:th {:class (day-status year month day) :colspan 4}
-            (format "%s %s%s"(day-name day month year) day (get-int-suffix day))]]
-                        (for [event events]
-                                (event-row event))])
+  [:div
+   [:div {:class (format "day-header %s" (day-status year month day))}
+    (format "%s %s%s"(day-name day month year) day (get-int-suffix day))]
+   (for [event events]
+     (event-row event))])
 
 (defn- get-relative-month-url [y m diff]
   (let [rel-month (time/plus (time/date-time y m 10 0 0 0) (time/months diff))]
@@ -124,12 +123,11 @@
     (if (month-year-valid? yr mth)
       (let [month-map (to-month (get-events yr mth) yr mth)]
         (page-container "Next Up On The Left"
-                        [:h1 (format "%s %s" (month-name mth) y)]
                         [:div {:class "month-nav"}
-                         [:a {:class "previous" :href (get-relative-month-url yr mth -1)}
-                          "Previous"]
-                         " "
-                         [:a {:class "next" :href (get-relative-month-url yr mth +1)} "Next"]]
+                         [:a {:class "prev" :href (get-relative-month-url yr mth -1)} "&larr;"]
+                         [:h1 {:class "month-name"} (format "%s %s" (month-name mth) y)]
+                         [:a {:class "next" :href (get-relative-month-url yr mth +1)} "&rarr;"]
+                         ]
                         [:div {:class "clear-float"}]
                         (if (empty? month-map)
                           [:p  "No events have been submitted yet."]
