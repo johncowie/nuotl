@@ -83,4 +83,5 @@
    (attr 15 1 :id) => 104
    (attr 30 0 :id) => 102
    (attr 31 0 :id) => 102
+   (keys month) => (contains '(1 15 30 31))
    ))
