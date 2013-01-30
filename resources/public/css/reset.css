@@ -112,7 +112,6 @@ body {
 }
 
 .event {
-        background-color: #AAAAAA;
         border-radius: 5px;
         -moz-border-radius: 5px;
         margin-bottom: 10px;
@@ -125,6 +124,7 @@ body {
     color: #FFFFFF;
 }
 
+.event {background-color: #AAAAAA; border: 5px solid #888888;}
 .tag-environment { background-color: #009989; border: 5px solid #006666; }
 .tag-cuts { background-color: #CE1836; border: 5px solid #771111;}
 .tag-trade { background-color: #F85931; border: 5px solid #c82921;}
