@@ -55,6 +55,7 @@ body {
         text-align: right;
         padding-right: 30px;
         color: #FFFFFF;
+        margin-top: 50px;
 }
 
 .footer a:link, .footer a:active, .footer a:visited {
@@ -124,32 +125,11 @@ body {
     color: #FFFFFF;
 }
 
-.tag-environment { background-color: #009989; }
-.tag-cuts { background-color: #CE1836; }
-.tag-trade { background-color: #F85931; }
-.tag-feminism { background-color: #EDB92E; }
-.tag-other { background-color: #A3A948; }
-
-.expired a {
-    color: #bbbbbb;
-}
-
-.expired a:hover {
-    color: #dddddd;
-}
-
-.expired img {
-    opacity:0.3;
-    filter:alpha(opacity=30);
-}
-
-.expired {
-        color: #888888;
-}
-
-.expired.event {
-    background-color: #cccccc;
-}
+.tag-environment { background-color: #009989; border: 5px solid #006666; }
+.tag-cuts { background-color: #CE1836; border: 5px solid #771111;}
+.tag-trade { background-color: #F85931; border: 5px solid #c82921;}
+.tag-feminism { background-color: #EDB92E; border: 5px solid #996600;}
+.tag-other { background-color: #A3A948; border: 5px solid #668722;}
 
 .event a:hover {
     color: #990000;
@@ -173,12 +153,12 @@ body {
 
 .name {
         display: inline-block;
-        width: 150px;
+        width: 145px;
 }
 
 .area {
         display: inline-block;
-        width: 150px;
+        width: 145px;
 }
 
 .profile {
@@ -189,4 +169,26 @@ body {
         vertical-align: middle;
         height: 30px;
         width: 30px;
+}
+
+.expired a {
+    color: #aaaaaa;
+}
+
+.expired a:hover {
+    color: #ffffff;
+}
+
+.expired img {
+    opacity:0.3;
+    filter:alpha(opacity=30);
+}
+
+.expired {
+        color: #888888;
+}
+
+.expired.event {
+    background-color: #cccccc;
+    border: 5px solid #aaaaaa;
 }
