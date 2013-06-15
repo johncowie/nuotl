@@ -1,0 +1,31 @@
+ROAD MAP
+=========
+
+Architecture:
+	- Reduce coupling to DB by wrapping mongo with an API
+	- Twitter module and frontend module should talk to the DB module over HTTP
+
+
+Frontend:
+	- Start using bootstrap version of calendar
+	- Reduce dependency on templating (e.g. hiccup) - use lazer instead
+	- put classes on elements that need their content replaced
+		- nuotl-month-header
+		- nuotl-day-header
+		- nuotl-event
+		- nuotl-start-time
+		- nuotl-end-time
+		- nuotl-area
+		- nuotl-description
+		- nuotl-tweeter
+		- nuotl-tweeter-icon
+	- Create tweet generator utility (put info into fields and it tells you what to tweet)
+
+Twitter:
+	- Use monads to improve error-handling/flow in tweet processing
+	- Remove use of custom exceptions and pump error codes through monads
+	- Develop monad/dsl to describe workflow
+
+
+
+
