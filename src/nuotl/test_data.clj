@@ -14,6 +14,3 @@
         :area "N"
      }
 ])
-
-(defn add-test-data []
-  (map dao/add-event data))

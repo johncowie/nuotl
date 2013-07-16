@@ -9,7 +9,7 @@
         [hiccup.core :only [html]]
         [hiccup.page :only [include-css html5]]
         [hiccup.util :only [url]]
-        [nuotl.dao :only [get-events get-features]]
+        [nuotl.dao :only [get-events]]
         [nuotl.date-helper :only [month-name day-name get-int-suffix format-date month-year-valid?]]
         [nuotl.events :only [to-month]]))
 
@@ -134,16 +134,6 @@
                           (for [[day events] month-map]
                             (day-table day mth yr events)))))
       (page-container "Invalid URL" [:p "Invalid year/month"]))))
-
-(defn feature-page []
-  (page-container "Feature Requests"
-   [:h1 "Feature Requests"]
-   [:table
-    (for [feature (get-features)]
-      [:tr
-       [:td (format/unparse (format/formatter "dd/MM/yyyy HH:mm") (feature :created-at))]
-       [:td (format "@%s"(feature :username))]
-       [:td (feature :text)]])]))
 
 (defn- release-html []
   (slurp (clojure.java.io/resource "public/templates/releases.html")))

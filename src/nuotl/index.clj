@@ -3,12 +3,13 @@
             [ring.adapter.jetty :as jetty]
             [ring.util.response :as ring-response]
             [clojure.tools.logging :as log]
-            [nuotl.views :as views])
-  (:use
-       [compojure.core]
-       [compojure.route :only [not-found resources]]
-       [compojure.handler :only [site]]
-       [ring.middleware.resource :only [wrap-resource]])
+            [nuotl.views :as views]
+            [nuotl.config :refer load-config!]
+            [compojure.core :refer [GET ANY defroutes]]
+            [compojure.route :refer [not-found resources]]
+            [compojure.handler :refer [site]]
+            [ring.middleware.resource :refer [wrap-resource]]
+            )
   (:gen-class))
 
 (defn redirect-to-current []
@@ -26,8 +27,8 @@
   (GET "/events/:y/" [y] (redirect-to-current-month y))
   (GET "/events/:y" [y] (redirect-to-current-month y))
   (GET "/events/:y/:m" [y m]  (views/event-page y m))
-  (GET "/features" [] (views/feature-page))
-  (GET "/releases" [] (views/release-page))
+  ;(GET "/features" [] (views/feature-page))
+  ;(GET "/releases" [] (views/release-page))
   (GET "/instructions" [] (views/instructions-page))
   (resources "/")
   (ANY "*" []  (views/page-404)))
@@ -38,6 +39,4 @@
    (wrap-resource "/public")))
 
 (defn -main [& args]
-  (if (not (empty? args))
-    (jetty/run-jetty app {:port (read-string (first args))})
-    (jetty/run-jetty app {:port 3000})))
+  (jetty/run-jetty app (get-in (load-config! (first args)) [:http :port])))

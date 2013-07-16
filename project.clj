@@ -2,7 +2,6 @@
             :description "FIXME: write this!"
             :dependencies [[org.clojure/clojure "1.4.0"]
                            [hiccup "1.0.2"]
-                           [com.novemberain/monger "1.4.0"]
                            [clj-time "0.4.4"]
                            [cheshire "5.0.0"]
                            [compojure "1.1.3"]
@@ -12,6 +11,8 @@
                            [org.clojure/tools.logging "0.2.6"]
                            [midje "1.4.0"]
                            [net.sf.jtidy/jtidy "r938"]
+                           [clj-http "0.7.3"]
+                           [clj-yaml "0.4.0"]
                            ]
              :main nuotl.index
              :plugins [[lein-ring "0.7.5"]

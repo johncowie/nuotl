@@ -38,7 +38,11 @@
   (flatten (map (fn [e] (split-long-event e y m)) events)))
 
 (defn get-approved [events]
-  (filter #(= ((% :tweeter) :approved) "Y")  events))
+  (filter
+   #(and
+     (not (nil? (get-in % [:tweeter :approved])))
+     (= (get-in % [:tweeter :approved]) "Y"))
+   events))
 
 (defn to-month [events y m]
         (into (sorted-map) (map (fn [event-group] [(event-group 0)

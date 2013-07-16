@@ -1,0 +1,8 @@
+http:
+  port: 40020
+
+cache:
+  scheme: http
+  host: localhost
+  port: 40000
+
