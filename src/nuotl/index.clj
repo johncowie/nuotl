@@ -4,7 +4,7 @@
             [ring.util.response :as ring-response]
             [clojure.tools.logging :as log]
             [nuotl.views :as views]
-            [nuotl.config :refer load-config!]
+            [nuotl.config :refer [load-config!]]
             [compojure.core :refer [GET ANY defroutes]]
             [compojure.route :refer [not-found resources]]
             [compojure.handler :refer [site]]
@@ -39,4 +39,4 @@
    (wrap-resource "/public")))
 
 (defn -main [& args]
-  (jetty/run-jetty app (get-in (load-config! (first args)) [:http :port])))
+  (jetty/run-jetty app {:port (get-in (load-config! (first args)) [:http :port])}))

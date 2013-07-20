@@ -62,7 +62,7 @@
 
 
 (defn- event-row [event]
-  [:div {:id (get-row-id event) :class (format "event %s %s %s" (fix-tags (event :tags))
+  [:div {:id (str "E" (get-row-id event)) :class (format "event %s %s %s" (fix-tags (event :tags))
                        (event-status event) (event-region event))}
                    [:span {:class "data time"} (format-date (event :start) (event :start-rolled))]
                    [:span {:class "data time"} (format-date (event :end) (event :end-rolled))]

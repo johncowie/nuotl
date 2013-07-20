@@ -39,27 +39,18 @@
 
 (def test-events [
                   {:id 101
-                   :start (t/date-time 2013 1 15 7)
-                   :end (t/date-time 2013 1 16 9)
-                   :tweeter {:approved "N"}}
-                  {:id 102
                    :start (t/date-time 2013 1 30 7)
-                   :end (t/date-time 2013 2 1 9)
-                   :tweeter {:approved "Y"}}
-                  {:id 103
+                   :end (t/date-time 2013 2 1 9)}
+                  {:id 102
                    :start (t/date-time 2012 12 25 5)
-                   :end (t/date-time 2013 1 1 10)
-                   :tweeter {:approved "Y"}
-                   }
-                  {:id 104
+                   :end (t/date-time 2013 1 1 10)}
+                  {:id 103
                    :start (t/date-time 2013 1 15 17 15)
                    :end (t/date-time 2013 1 15 18)
-                   :tweeter {:approved "Y"}
                    }
-                  {:id 105
+                  {:id 104
                    :start (t/date-time 2013 1 15 17 4)
                    :end (t/date-time 2013 1 15 19)
-                   :tweeter {:approved "Y"}
                    }
                   ])
 
@@ -72,16 +63,16 @@
    (count (month 15)) => 2
    (count (month 30)) => 1
    (count (month 31)) => 1
-   (attr 1 0 :id) => 103
+   (attr 1 0 :id) => 102
    (attr 1 0 :start) => (t/date-time 2013 1 1 0 0 0)
    (attr 1 0 :start-rolled) => true
    (attr 1 0 :end) => (t/date-time 2013 1 1 10)
    (attr 1 0 :end-rolled) => false
-   (attr 15 0 :id) => 105
+   (attr 15 0 :id) => 104
    (attr 15 0 :start) => (t/date-time 2013 1 15 17 4)
    (attr 15 0 :start-rolled) => false
-   (attr 15 1 :id) => 104
-   (attr 30 0 :id) => 102
-   (attr 31 0 :id) => 102
+   (attr 15 1 :id) => 103
+   (attr 30 0 :id) => 101
+   (attr 31 0 :id) => 101
    (keys month) => (contains '(1 15 30 31))
    ))
