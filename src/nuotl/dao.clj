@@ -5,8 +5,6 @@
     [clj-time.format :as timef]
     [nuotl.config :refer [load-config! config]]))
 
-(load-config! "config/local-acceptance.yml")
-
 (defn root-url []
   (format "%s://%s:%s"
           (get-in (config) [:cache :scheme])
