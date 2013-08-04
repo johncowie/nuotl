@@ -23,17 +23,14 @@
    (let [jan-events (e/split-long-event event 2013 1)
          feb-events (e/split-long-event event 2013 2)]
      (count jan-events) => 3
-     (jan-events 0) => {:start (t/date-time 2013 1 29 7) :start-rolled false
-                        :end (t/date-time 2013 1 29 23 59 59) :end-rolled true}
-     (jan-events 1) => {:start (t/date-time 2013 1 30 0 0 0) :start-rolled true
-                        :end (t/date-time 2013 1 30 23 59 59) :end-rolled true}
-     (jan-events 2) => {:start (t/date-time 2013 1 31 0 0 0) :start-rolled true
-                        :end (t/date-time 2013 1 31 23 59 59) :end-rolled true}
+     (jan-events 0) => {:start (t/date-time 2013 1 29 7)
+                        :end nil}
+     (jan-events 1) => {:start nil :end nil}
+     (jan-events 2) => {:start nil :end nil}
      (count feb-events) => 2
-     (feb-events 0) => {:start (t/date-time 2013 2 1 0 0 0) :start-rolled true
-                        :end (t/date-time 2013 2 1 23 59 59) :end-rolled true}
-     (feb-events 1) => {:start (t/date-time 2013 2 2 0 0 0) :start-rolled true
-                        :end (t/date-time 2013 2 2 9) :end-rolled false}
+     (feb-events 0) => {:start nil :end nil}
+     (feb-events 1) => {:start nil
+                        :end (t/date-time 2013 2 2 9)}
      )))
 
 

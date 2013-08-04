@@ -12,9 +12,9 @@
     (compare day1 day2)))
 
 (defn- sub-event-dates [event current start end start-rolled? end-rolled?]
-  (let [s (if start-rolled? (date-time (year current) (month current) (day current) 0 0 0) start)
-        e (if end-rolled? (date-time (year current) (month current) (day current) 23 59 59) end)]
-    (merge event {:start s :end e :start-rolled start-rolled? :end-rolled end-rolled?})))
+  (let [s (if start-rolled? nil start)
+        e (if end-rolled? nil end)]
+    (merge event {:start s :end e})))
 
 (defn date-in-month? [date y m]
   (and (= (year date) y) (= (month date) m)))
