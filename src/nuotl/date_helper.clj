@@ -44,7 +44,7 @@
 (defn month-year-valid? [y m]
   (and (month-valid? m) (year-valid? y)))
 
-(defn format-date [date]
-  (if (nil? date)
+(defn format-date [date rolled?]
+  (if rolled?
     "--"
     (format/unparse (format/formatter "HH:mm") date)))

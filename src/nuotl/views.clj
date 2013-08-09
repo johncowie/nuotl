@@ -45,7 +45,7 @@
     "" ))
 
 (defn- get-row-id [event]
-  (if (nil? (event :start))
+  (if (event :start-rolled)
     nil
     (event :_id)
     ))
@@ -64,8 +64,8 @@
 (defn- event-row [event]
   [:div {:id (str "E" (get-row-id event)) :class (format "event %s %s %s" (fix-tags (event :tags))
                        (event-status event) (event-region event))}
-                   [:span {:class "data time"} (format-date (event :start))]
-                   [:span {:class "data time"} (format-date (event :end))]
+                   [:span {:class "data time"} (format-date (event :start) (event :start-rolled))]
+                   [:span {:class "data time"} (format-date (event :end) (event :end-rolled))]
                    [:span {:class "data text"} (event :text)]
                    [:span {:class "data name"}
                     [:a {:href (get-tweeter-url (event :tweeter))}
